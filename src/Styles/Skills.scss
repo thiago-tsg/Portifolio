@@ -1,0 +1,154 @@
+@use "../Styles/index" as *;
+
+.cg-main {
+  background-color: $tertiary;
+
+  .section-skilss-resume {
+    .cg-skills {
+      .title {
+        margin-bottom: 3rem;
+        color: $secondary;
+        position: relative;
+        font-family: "Shadows Into Light", cursive;
+
+        &::after {
+          content: "";
+          width: 15%;
+          height: 4px;
+          background: linear-gradient(90deg, #7af298, #00ffdd);
+          position: absolute;
+          bottom: -10px;
+          left: 0;
+          border-radius: 10px;
+        }
+      }
+
+      .c-skills {
+        flex-direction: column;
+
+        .skills__card {
+          position: relative;
+          padding: 1rem;
+          border-radius: 1rem;
+          overflow: hidden;
+          transition: all 0.4s ease;
+          opacity: 0;
+          transform: translateY(40px);
+          border: 1px solid #7af2983d;
+
+          &.show {
+            opacity: 1;
+            transform: translateY(0);
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: var(--y);
+            left: var(--x);
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(
+              circle,
+              rgba(122, 242, 152, 0.25),
+              transparent 60%
+            );
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            opacity: 0;
+            transition: 0.2s;
+          }
+
+          &:hover::after {
+            opacity: 1;
+          }
+
+          h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+          }
+
+          ul {
+            display: flex;
+            gap: 2rem;
+
+            li {
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+              transition: 0.3s;
+
+              svg {
+                font-size: 1.2rem;
+                color: #7af298;
+              }
+            }
+          }
+
+          &:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+
+            li {
+              transform: translateX(5px);
+            }
+          }
+        }
+      }
+    }
+
+    .cg-resumo {
+      :nth-child(1) {
+        padding-top: 0rem;
+        font-weight: 700;
+        color: $secondary;
+      }
+
+      p {
+        padding-top: 1rem;
+        text-align: justify;
+      }
+
+      .btn {
+        margin-top: 2rem;
+        width: 10rem;
+
+        &:hover {
+          color: $primary;
+          transform: translateX(10px);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .cg-main {
+    .section-skilss-resume {
+      flex-wrap: wrap;
+      .cg-skills {
+        .c-skills {
+          flex-direction: column;
+          gap: 3rem;
+
+          .skills__card {
+            width: 100%;
+
+            ul {
+              li {
+                flex-wrap: wrap;
+                align-items: start;
+              }
+            }
+          }
+        }
+      }
+
+      .cg-resumo {
+        :nth-child(1) {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,156 @@
+@use "../Styles/index" as *;
+
+.cg-curriculo {
+  background-color: $tertiary;
+  padding: 2rem 10rem;
+
+  .btn {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    transition: 0.25s;
+  }
+
+  /* TOPO */
+  .topo {
+    padding-bottom: 2rem;
+
+    .cargo {
+      color: $secondary;
+      font-weight: 700;
+      margin: 1.5rem;
+    }
+  }
+
+  /* GRID */
+  .grid-curriculo {
+    .bloco {
+      h2, h3 {
+        font-size: 1.2rem;
+      }
+
+      p, li, span{
+        font-size: 1rem;
+      }
+
+      .skills {
+        flex-wrap: wrap;
+
+        span {
+          padding: 0.3rem 0.7rem;
+          border-radius: 4px;
+          background: #050505;
+          border: 1px solid #111;
+          color: #888;
+          transition: 0.25s;
+
+          &:hover {
+            color: #000;
+            background: $secondary;
+            border-color: $secondary;
+          }
+        }
+      }
+
+      .item {
+        margin-bottom: 1.5rem;
+        padding-left: 0.5rem;
+        border-left: 2px solid #111;
+        transition: 0.3s;
+
+        &:hover {
+          border-color: $secondary;
+        }
+
+        h3 {
+          color: #fff;
+        }
+
+        span {
+          color: #666;
+          display: block;
+          margin-bottom: 0.5rem;
+        }
+
+        ul {
+          li {
+            color: #999;
+            margin-left: 1rem;
+            list-style: disc;
+          }
+        }
+      }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease;
+
+      &.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  /* BLOCOS MAIS LIMPOS (sem caixa pesada) */
+  .bloco {
+    border-left: 2px solid #111;
+    padding-left: 1.5rem;
+    transition: 0.3s;
+    margin-top: 0.5rem;
+
+    &:hover {
+      border-color: $secondary;
+    }
+
+    li {
+      color: #999;
+      margin-left: 1rem;
+      list-style: disc;
+    }
+
+    h2 {
+      color: $secondary;
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    p {
+      color: #aaa;
+      line-height: 1.6;
+    }
+  }
+
+  /* EXPERIÊNCIA */
+}
+
+@media (max-width: 768px) {
+  .cg-curriculo {
+    .topo {
+      margin-bottom: 2rem;
+    }
+
+    .grid-curriculo {
+      display: flex;
+      flex-direction: column;
+
+      .bloco {
+        border: none;
+        padding-left: 0;
+
+        p {
+          text-align: justify;
+        }
+
+        .skills {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+        }
+      }
+    }
+  }
+}

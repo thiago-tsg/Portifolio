@@ -1,0 +1,128 @@
+@use "../Styles/index" as *;
+
+.cg-footer {
+  background-color: $tertiary;
+  border-top: 1px solid #1a1a1a;
+  margin-top: 4rem;
+
+  /* glow topo */
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, $secondary, transparent);
+    opacity: 0.4;
+  }
+
+  .c-link-footer {
+    .rede-social,
+    .menu-footer {
+      p {
+        color: $secondary;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        letter-spacing: 0.08rem;
+        position: relative;
+
+        &::after {
+          content: "";
+          display: block;
+          width: 40px;
+          height: 2px;
+          background: $secondary;
+          margin: 0.4rem auto 0;
+          border-radius: 2px;
+          margin-left: 0;
+        }
+      }
+
+      ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+
+        li {
+          a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            transition: all 0.25s ease;
+            cursor: pointer;
+
+            svg {
+              font-size: 1.1rem;
+              transition: 0.3s;
+            }
+
+            &::after {
+              content: "";
+              position: absolute;
+              left: 0;
+              bottom: -4px;
+              width: 0%;
+              height: 2px;
+              background: linear-gradient(90deg, $secondary, #00ffdd);
+              transition: width 0.3s ease;
+            }
+
+            &:hover {
+              color: $secondary;
+              transform: translateY(-2px);
+
+              svg {
+                transform: scale(1.2);
+                filter: drop-shadow(0 0 6px rgba(122, 242, 152, 0.6));
+              }
+            }
+
+            &:hover::after {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .credito {
+    border-top: 1px solid #1a1a1a;
+    margin-top: 2rem;
+    padding: 1rem 0;
+
+    a {
+      color: #666;
+      letter-spacing: 0.08rem;
+      opacity: 0.8;
+      transition: 0.3s;
+
+      &:hover {
+        opacity: 1;
+        color: $secondary;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .cg-footer {
+    .c-link-footer {
+      flex-direction: column;
+
+      .menu-footer,
+      .rede-social {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+    }
+  }
+}
