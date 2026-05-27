@@ -46,7 +46,21 @@ const App = () => {
   return (
     <HashRouter>
 
-      <div className="futuristic-bg" />
+      <div className="futuristic-bg">
+
+        <div className="shape triangle" />
+        <div className="shape triangle" />
+        <div className="shape triangle" />
+
+        <div className="shape circle" />
+        <div className="shape circle" />
+        <div className="shape circle" />
+
+        <div className="shape rect" />
+        <div className="shape rect" />
+        <div className="shape rect" />
+
+      </div>
 
       <ScrollToTop />
 

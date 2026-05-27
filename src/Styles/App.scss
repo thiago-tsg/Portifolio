@@ -1,47 +1,122 @@
-body {
-  margin: 0;
-  background: #05010a;
-  color: white;
-  overflow-x: hidden;
-}
+@use "../Styles/index" as *;
 
-/* camada futurista */
+/* =========================
+   BACKGROUND BASE
+========================= */
+
 .futuristic-bg {
   position: fixed;
   inset: 0;
   z-index: -1;
   overflow: hidden;
-  background: radial-gradient(circle at 20% 20%, #6f00ff33, transparent 40%),
-              radial-gradient(circle at 80% 30%, #00d4ff22, transparent 40%),
-              radial-gradient(circle at 50% 80%, #ff00ff22, transparent 50%),
-              #05010a;
+  background: $tertiary;
 }
 
-/* efeito de grid futurista */
-.futuristic-bg::before {
-  content: "";
+/* =========================
+   CONTAINER DAS FORMAS
+========================= */
+
+.shape {
   position: absolute;
-  inset: 0;
-  background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 60px 60px;
-  transform: perspective(500px) rotateX(60deg);
-  transform-origin: center top;
-  opacity: 0.3;
+  opacity: 0.6;
+  filter: drop-shadow(0 0 8px rgba(122, 242, 152, 0.6));
+  background: transparent;
 }
 
-/* brilho animado */
-.futuristic-bg::after {
-  content: "";
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(0,255,255,0.25), transparent 60%);
-  filter: blur(80px);
-  animation: moveGlow 10s infinite alternate ease-in-out;
+/* =========================
+   TRIÂNGULO
+========================= */
+
+.triangle {
+  width: 0;
+  height: 0;
+
+  border-left: 18px solid transparent;
+  border-right: 18px solid transparent;
+  border-bottom: 30px solid $secondary;
+
+  animation: moveTriangle 12s linear infinite alternate;
 }
 
-@keyframes moveGlow {
-  from { transform: translate(10%, 10%); }
-  to { transform: translate(70%, 40%); }
+/* =========================
+   CÍRCULO
+========================= */
+
+.circle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: $secondary;
+
+  animation: moveCircle 10s linear infinite alternate;
+}
+
+/* =========================
+   RETÂNGULO
+========================= */
+
+.rect {
+  width: 28px;
+  height: 14px;
+  background: $secondary;
+
+  animation: moveRect 14s linear infinite alternate;
+}
+
+/* =========================
+   ANIMAÇÕES (MOVIMENTO LIVRE)
+========================= */
+
+@keyframes moveTriangle {
+  0% {
+    transform: translate(10vw, 20vh) rotate(0deg);
+  }
+  25% {
+    transform: translate(70vw, 10vh) rotate(90deg);
+  }
+  50% {
+    transform: translate(80vw, 70vh) rotate(180deg);
+  }
+  75% {
+    transform: translate(20vw, 80vh) rotate(270deg);
+  }
+  100% {
+    transform: translate(10vw, 20vh) rotate(360deg);
+  }
+}
+
+@keyframes moveCircle {
+  0% {
+    transform: translate(80vw, 10vh);
+  }
+  25% {
+    transform: translate(60vw, 70vh);
+  }
+  50% {
+    transform: translate(20vw, 60vh);
+  }
+  75% {
+    transform: translate(30vw, 20vh);
+  }
+  100% {
+    transform: translate(80vw, 10vh);
+  }
+}
+
+@keyframes moveRect {
+  0% {
+    transform: translate(10vw, 80vh);
+  }
+  25% {
+    transform: translate(40vw, 30vh);
+  }
+  50% {
+    transform: translate(90vw, 40vh);
+  }
+  75% {
+    transform: translate(60vw, 90vh);
+  }
+  100% {
+    transform: translate(10vw, 80vh);
+  }
 }
