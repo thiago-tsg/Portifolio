@@ -4,119 +4,144 @@
    BACKGROUND BASE
 ========================= */
 
-.futuristic-bg {
+.bg {
   position: fixed;
   inset: 0;
-  z-index: -1;
   overflow: hidden;
+  z-index: -1;
+
   background: $tertiary;
 }
 
 /* =========================
-   CONTAINER DAS FORMAS
+   SHAPES BASE
 ========================= */
 
 .shape {
   position: absolute;
-  opacity: 0.6;
-  filter: drop-shadow(0 0 8px rgba(122, 242, 152, 0.6));
-  background: transparent;
+
+  width: 26px;
+  height: 26px;
+
+  background: $secondary;
+
+  filter: drop-shadow(0 0 12px rgba(122, 242, 152, 0.85));
+
+  will-change: transform;
+  transition: transform 0.02s linear;
+
+  opacity: 0.9;
 }
 
 /* =========================
-   TRIÂNGULO
+   VARIAÇÕES VISUAIS
 ========================= */
 
+/* círculo maior */
+.circle {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+
+  box-shadow: 0 0 18px rgba(122, 242, 152, 0.6);
+}
+
+/* retângulo mais presente */
+.rect {
+  width: 40px;
+  height: 18px;
+
+  border-radius: 4px;
+
+  box-shadow: 0 0 14px rgba(122, 242, 152, 0.5);
+}
+
+/* triângulo maior */
 .triangle {
   width: 0;
   height: 0;
 
-  border-left: 18px solid transparent;
-  border-right: 18px solid transparent;
-  border-bottom: 30px solid $secondary;
+  background: transparent;
 
-  animation: moveTriangle 12s linear infinite alternate;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-bottom: 24px solid $secondary;
+
+  filter: drop-shadow(0 0 12px rgba(122, 242, 152, 0.85));
 }
 
 /* =========================
-   CÍRCULO
+   NOVA FORMA: LOSANGO (diamond)
 ========================= */
 
-.circle {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
+.diamond {
+  width: 22px;
+  height: 22px;
+
   background: $secondary;
 
-  animation: moveCircle 10s linear infinite alternate;
+  transform: rotate(45deg);
+
+  box-shadow: 0 0 14px rgba(122, 242, 152, 0.7);
 }
 
 /* =========================
-   RETÂNGULO
+   NOVA FORMA: LINHA ENERGÉTICA
 ========================= */
 
-.rect {
-  width: 28px;
-  height: 14px;
+.line {
+  width: 50px;
+  height: 4px;
+
   background: $secondary;
 
-  animation: moveRect 14s linear infinite alternate;
+  box-shadow: 0 0 10px rgba(122, 242, 152, 0.6);
+
+  border-radius: 2px;
 }
 
 /* =========================
-   ANIMAÇÕES (MOVIMENTO LIVRE)
+   ANIMAÇÃO DE VIDA (SUAVE)
 ========================= */
 
-@keyframes moveTriangle {
+.shape {
+  animation: glowPulse 2.8s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
   0% {
-    transform: translate(10vw, 20vh) rotate(0deg);
+    filter: drop-shadow(0 0 8px rgba(122, 242, 152, 0.4));
+    opacity: 0.75;
   }
-  25% {
-    transform: translate(70vw, 10vh) rotate(90deg);
-  }
-  50% {
-    transform: translate(80vw, 70vh) rotate(180deg);
-  }
-  75% {
-    transform: translate(20vw, 80vh) rotate(270deg);
-  }
+
   100% {
-    transform: translate(10vw, 20vh) rotate(360deg);
+    filter: drop-shadow(0 0 18px rgba(122, 242, 152, 0.95));
+    opacity: 1;
   }
 }
 
-@keyframes moveCircle {
-  0% {
-    transform: translate(80vw, 10vh);
-  }
-  25% {
-    transform: translate(60vw, 70vh);
-  }
-  50% {
-    transform: translate(20vw, 60vh);
-  }
-  75% {
-    transform: translate(30vw, 20vh);
-  }
-  100% {
-    transform: translate(80vw, 10vh);
-  }
-}
+/* =========================
+   MOBILE
+========================= */
 
-@keyframes moveRect {
-  0% {
-    transform: translate(10vw, 80vh);
+@media (max-width: 768px) {
+  .shape {
+    width: 20px;
+    height: 20px;
   }
-  25% {
-    transform: translate(40vw, 30vh);
+
+  .rect {
+    width: 30px;
+    height: 14px;
   }
-  50% {
-    transform: translate(90vw, 40vh);
+
+  .triangle {
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 18px solid $secondary;
   }
-  75% {
-    transform: translate(60vw, 90vh);
-  }
-  100% {
-    transform: translate(10vw, 80vh);
+
+  .line {
+    width: 36px;
   }
 }

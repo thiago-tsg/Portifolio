@@ -11,6 +11,8 @@ import Projetos from './Projetos.jsx'
 import Footer from './Footer.jsx'
 import Curriculo from "./Curriculo";
 
+import Background from "./Background";
+
 // Styles
 import '../Styles/App.scss'
 
@@ -46,21 +48,7 @@ const App = () => {
   return (
     <HashRouter>
 
-      <div className="futuristic-bg">
-
-        <div className="shape triangle" />
-        <div className="shape triangle" />
-        <div className="shape triangle" />
-
-        <div className="shape circle" />
-        <div className="shape circle" />
-        <div className="shape circle" />
-
-        <div className="shape rect" />
-        <div className="shape rect" />
-        <div className="shape rect" />
-
-      </div>
+      <Background />
 
       <ScrollToTop />
 
