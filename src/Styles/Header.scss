@@ -1,7 +1,7 @@
 @use "../Styles/index" as *;
 
 .cg-header {
-  background-color: $tertiary;
+  background-color: transparent;
   min-height: calc(100vh - 5rem);
   padding: 0.5rem 10rem 0rem;
 

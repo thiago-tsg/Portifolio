@@ -11,6 +11,9 @@ import Projetos from './Projetos.jsx'
 import Footer from './Footer.jsx'
 import Curriculo from "./Curriculo";
 
+// Styles
+import '../Styles/App.scss'
+
 
 // Responsável por controlar o scroll entre páginas
 const ScrollToTop = () => {
@@ -42,6 +45,8 @@ const ScrollToTop = () => {
 const App = () => {
   return (
     <HashRouter>
+
+      <div className="futuristic-bg" />
 
       <ScrollToTop />
 

@@ -1,7 +1,7 @@
 @use "../Styles/index" as *;
 
 .cg-projetos {
-  background-color: $tertiary;
+  background-color: transparent;
 
   .title {
     color: $secondary;
@@ -85,7 +85,7 @@
         transition: 0.4s;
         z-index: 3;
 
-        h3{
+        h3 {
           font-family: "Shadows Into Light", cursive;
           color: $secondary;
         }
@@ -129,7 +129,6 @@
     backdrop-filter: blur(0.8rem);
     animation: fadeIn 0.4s ease;
     z-index: 1000;
-
 
     .modal-content {
       background: #111;
