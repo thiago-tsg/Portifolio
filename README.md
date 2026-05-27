@@ -3,7 +3,7 @@
 ### Portfólio profissional focado em conversão, performance e experiência do usuário
 
 🔗 **Demonstração ao vivo:**  
-https://thiago-tsg.github.io/Agency-CodeBr/
+https://thiago-tsg.github.io/Portifolio/
 
 ---
 
@@ -15,7 +15,7 @@ https://thiago-tsg.github.io/Agency-CodeBr/
 
 ## ✨ Sobre o projeto
 
-O **Agency CodeBr** é um portfólio desenvolvido para apresentar projetos de forma estratégica, indo além do visual e destacando o **valor real entregue em cada solução**.
+Esse projeto **Thiago SG** é um portfólio desenvolvido para apresentar projetos de forma estratégica, indo além do visual e destacando o **valor real entregue em cada solução**.
 
 O objetivo não é apenas exibir interfaces, mas comunicar **problemas resolvidos, decisões técnicas e impacto gerado**.
 
@@ -115,8 +115,8 @@ Rota dedicada incluindo:
 ## 🚀 Como executar
 
 ```bash
-git clone https://github.com/thiago-tsg/Agency-CodeBr.git
-cd Agency-CodeBr
+git clone https://github.com/thiago-tsg/Portifolio.git
+cd Portifolio
 npm install
 npm run dev
 ```
