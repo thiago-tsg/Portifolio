@@ -1,5 +1,5 @@
 // React
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 
 // Componentes
@@ -41,7 +41,7 @@ const ScrollToTop = () => {
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
 
       <ScrollToTop />
 
@@ -67,7 +67,7 @@ const App = () => {
         <Footer />
 
       </section>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
