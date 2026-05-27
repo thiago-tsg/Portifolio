@@ -1,145 +1,15 @@
-# 🚀 Agency CodeBr
-
-### Professional portfolio focused on conversion, performance and user experience
-
-🔗 **Live Demo:**  
-https://thiago-tsg.github.io/Agency-CodeBr/
-
----
-
-## 📸 Preview
-
-![Project Preview](./preview.png)
-
----
-
-## ✨ About the project
-
-**Agency CodeBr** is a portfolio built to present projects in a strategic way, going beyond visuals and highlighting the **real value delivered in each solution**.
-
-The goal is not just to showcase interfaces, but to communicate **problems solved, technical decisions, and impact**.
-
----
-
-## 🎯 Purpose
-
-Transform a standard portfolio into a **conversion-focused tool** capable of:
-
-- capturing attention  
-- demonstrating technical authority  
-- communicating value clearly  
-- generating real opportunities (freelance or hiring)  
-
----
-
-## 💡 Approach
-
-Each project is structured as a real-world case study:
-
-- 🚨 Problem  
-- 💡 Solution  
-- ⚙️ Technologies  
-
-This turns the portfolio into a **product-oriented presentation**, not just a visual gallery.
-
----
-
-## ⚙️ Features
-
-- 📂 Interactive project grid  
-- 🖼️ Modal with image carousel  
-- 📖 Case study view (problem, solution, technologies)  
-- 📱 Fully responsive layout  
-- ⚡ SPA navigation with React Router  
-- 🎨 Advanced animations & microinteractions  
-- 💬 Direct WhatsApp contact  
-- 📄 Integrated resume page  
-
----
-
-## 🧠 Technical highlights
-
-### ⚡ Performance
-- Optimized scroll using `requestAnimationFrame`  
-- Efficient animations with `IntersectionObserver`  
-- Reduced reflows and rendering overhead  
-
-### 🎨 Interactivity
-- Dynamic typing effect  
-- Scroll-based animations  
-- Interactive cursor glow effect  
-- Modal system with state control  
-- Keyboard support (ESC to close)  
-
-### 🧱 Architecture
-- Reusable component structure  
-- Clear separation of concerns  
-- Scalable project data model  
-- Advanced React hooks usage  
-
----
-
-## 🧩 UX Flow
-
-1. Strong visual entry  
-2. Personal introduction  
-3. Skills & summary  
-4. Project exploration  
-5. Deep case studies  
-6. Conversion actions  
-
----
-
-## 📄 Resume page
-
-Dedicated route including:
-
-- Professional layout  
-- Responsive grid system  
-- Scroll-based animations  
-- Seamless navigation  
-
----
-
-## 🛠️ Tech Stack
-
-- React + Vite  
-- JavaScript  
-- SCSS  
-- React Router  
-- tsparticles  
-- React Icons  
-
----
-
-## 🚀 Getting started
-
-```bash
-git clone https://github.com/thiago-tsg/Agency-CodeBr.git
-cd Agency-CodeBr
-npm install
-npm run dev
-
----
-
-
----
-
-# 🇧🇷 README.pt.md (PORTUGUÊS)
-
-```markdown
-# 🚀 Agency CodeBr
+# 🚀 Thiago SG
 
 ### Portfólio profissional focado em conversão, performance e experiência do usuário
 
-🔗 **Acesse ao vivo:**  
+🔗 **Demonstração ao vivo:**  
 https://thiago-tsg.github.io/Agency-CodeBr/
 
 ---
 
-## 📸 Preview
+## 📸 Prévia
 
-![Preview do projeto](./preview.png)
+![Prévia do Projeto](./preview.png)
 
 ---
 
@@ -153,35 +23,35 @@ O objetivo não é apenas exibir interfaces, mas comunicar **problemas resolvido
 
 ## 🎯 Objetivo
 
-Transformar um portfólio comum em uma **ferramenta de conversão**, capaz de:
+Transformar um portfólio comum em uma **ferramenta focada em conversão**, capaz de:
 
 - capturar atenção  
 - demonstrar autoridade técnica  
-- comunicar valor de forma clara  
-- gerar oportunidades reais (freela ou contratação)  
+- comunicar valor com clareza  
+- gerar oportunidades reais (freelance ou contratação)  
 
 ---
 
 ## 💡 Abordagem
 
-Cada projeto é estruturado como um case real:
+Cada projeto é estruturado como um estudo de caso real:
 
 - 🚨 Problema  
 - 💡 Solução  
 - ⚙️ Tecnologias  
 
-Isso transforma o portfólio em uma **apresentação orientada a produto**, e não apenas uma vitrine visual.
+Isso transforma o portfólio em uma **apresentação orientada a produto**, e não apenas em uma galeria visual.
 
 ---
 
 ## ⚙️ Funcionalidades
 
-- 📂 Grid interativo de projetos  
+- 📂 Grade interativa de projetos  
 - 🖼️ Modal com carrossel de imagens  
-- 📖 Visualização de case (problema, solução, tecnologias)  
-- 📱 Layout responsivo  
-- ⚡ SPA com React Router  
-- 🎨 Microinterações e animações avançadas  
+- 📖 Visualização de estudos de caso (problema, solução e tecnologias)  
+- 📱 Layout totalmente responsivo  
+- ⚡ Navegação SPA com React Router  
+- 🎨 Animações avançadas e microinterações  
 - 💬 Contato direto via WhatsApp  
 - 📄 Página de currículo integrada  
 
@@ -190,48 +60,48 @@ Isso transforma o portfólio em uma **apresentação orientada a produto**, e n�
 ## 🧠 Destaques técnicos
 
 ### ⚡ Performance
-- Scroll otimizado com `requestAnimationFrame`  
-- Animações com `IntersectionObserver`  
+- Scroll otimizado utilizando `requestAnimationFrame`  
+- Animações eficientes com `IntersectionObserver`  
 - Redução de reflows e custo de renderização  
 
 ### 🎨 Interatividade
-- Efeito de digitação dinâmico  
+- Efeito dinâmico de digitação  
 - Animações baseadas em scroll  
-- Cursor interativo com glow  
-- Modais com controle de estado  
-- Suporte a tecla ESC  
+- Cursor interativo com efeito glow  
+- Sistema de modais com controle de estado  
+- Suporte ao teclado (ESC para fechar)  
 
 ### 🧱 Arquitetura
-- Componentização reutilizável  
-- Separação de responsabilidades  
-- Estrutura de dados escalável  
-- Uso avançado de hooks  
+- Estrutura de componentes reutilizáveis  
+- Separação clara de responsabilidades  
+- Modelo de dados escalável para projetos  
+- Uso avançado de hooks do React  
 
 ---
 
-## 🧩 UX Flow
+## 🧩 Fluxo de UX
 
 1. Entrada visual impactante  
 2. Apresentação pessoal  
-3. Skills e resumo  
+3. Skills e resumo profissional  
 4. Exploração de projetos  
-5. Aprofundamento em cases  
-6. Conversão (contato ou análise)  
+5. Estudos de caso aprofundados  
+6. Ações de conversão  
 
 ---
 
-## 📄 Currículo
+## 📄 Página de currículo
 
-Página dedicada com:
+Rota dedicada incluindo:
 
-- Estrutura profissional completa  
-- Layout em grid responsivo  
-- Animações progressivas  
+- Layout profissional  
+- Sistema de grid responsivo  
+- Animações baseadas em scroll  
 - Navegação fluida  
 
 ---
 
-## 🛠️ Stack
+## 🛠️ Stack Tecnológica
 
 - React + Vite  
 - JavaScript  
@@ -249,3 +119,4 @@ git clone https://github.com/thiago-tsg/Agency-CodeBr.git
 cd Agency-CodeBr
 npm install
 npm run dev
+```
