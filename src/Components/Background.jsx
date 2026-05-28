@@ -1,201 +1,238 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
+
+const SHAPE_SIZE = 32;
+const TOTAL_SHAPES = 12;
+
+const MAX_SPEED = 3;
+const MIN_SPEED = 0.3;
 
 const getRandom = (min, max) => Math.random() * (max - min) + min;
 
-export default function Background() {
-    const [shapes, setShapes] = useState([]);
-    const [ready, setReady] = useState(false);
+const getSize = () => ({
+    w: window.innerWidth,
+    h: window.innerHeight
+});
 
-    // função segura de tamanho (corrige mobile bug)
-    const getSize = () => ({
-        w: window.innerWidth,
-        h: window.innerHeight || document.documentElement.clientHeight
+export default function Background() {
+    const animationRef = useRef();
+
+    const mouse = useRef({
+        x: window.innerWidth / 2,
+        y: window.innerHeight / 2
     });
 
-    // inicialização das formas
+    const shapesRef = useRef([]);
+
+    const elementsRef = useRef([]);
+
+    // INITIALIZE SHAPES
     useEffect(() => {
         const { w, h } = getSize();
 
-        const initial = [
-            {
-                id: 1,
-                type: "circle",
-                x: getRandom(0, Math.max(0, w - 120)),
-                y: getRandom(0, Math.max(0, h - 120)),
-                vx: getRandom(-4, 4),
-                vy: getRandom(-4, 4),
-            },
-            {
-                id: 2,
-                type: "circle",
-                x: getRandom(0, Math.max(0, w - 120)),
-                y: getRandom(0, Math.max(0, h - 120)),
-                vx: getRandom(-4, 4),
-                vy: getRandom(-4, 4),
-            },
-            {
-                id: 3,
-                type: "circle",
-                x: getRandom(0, Math.max(0, w - 120)),
-                y: getRandom(0, Math.max(0, h - 120)),
-                vx: getRandom(-4, 4),
-                vy: getRandom(-4, 4),
-            },
-            {
-                id: 4,
-                type: "circle",
-                x: getRandom(0, Math.max(0, w - 120)),
-                y: getRandom(0, Math.max(0, h - 120)),
-                vx: getRandom(-4, 4),
-                vy: getRandom(-4, 4),
-            },
-            {
-                id: 5,
-                type: "circle",
-                x: getRandom(0, Math.max(0, w - 120)),
-                y: getRandom(0, Math.max(0, h - 120)),
-                vx: getRandom(-4, 4),
-                vy: getRandom(-4, 4),
-            },
-            {
-                id: 6,
-                type: "circle",
-                x: getRandom(0, Math.max(0, w - 120)),
-                y: getRandom(0, Math.max(0, h - 120)),
-                vx: getRandom(-4, 4),
-                vy: getRandom(-4, 4),
-            },
-            {
-                id: 7,
-                type: "circle",
-                x: getRandom(0, Math.max(0, w - 120)),
-                y: getRandom(0, Math.max(0, h - 120)),
-                vx: getRandom(-4, 4),
-                vy: getRandom(-4, 4),
-            },
-            {
-                id: 8,
-                type: "circle",
-                x: getRandom(0, Math.max(0, w - 120)),
-                y: getRandom(0, Math.max(0, h - 120)),
-                vx: getRandom(-4, 4),
-                vy: getRandom(-4, 4),
-            },
-            {
-                id: 9,
-                type: "circle",
-                x: getRandom(0, Math.max(0, w - 120)),
-                y: getRandom(0, Math.max(0, h - 120)),
-                vx: getRandom(-4, 4),
-                vy: getRandom(-4, 4),
-            },
-            {
-                id: 10,
-                type: "circle",
-                x: getRandom(0, Math.max(0, w - 120)),
-                y: getRandom(0, Math.max(0, h - 120)),
-                vx: getRandom(-4, 4),
-                vy: getRandom(-4, 4),
-            },
-            {
-                id: 11,
-                type: "circle",
-                x: getRandom(0, Math.max(0, w - 120)),
-                y: getRandom(0, Math.max(0, h - 120)),
-                vx: getRandom(-4, 4),
-                vy: getRandom(-4, 4),
-            },
-            {
-                id: 12,
-                type: "circle",
-                x: getRandom(0, Math.max(0, w - 120)),
-                y: getRandom(0, Math.max(0, h - 120)),
-                vx: getRandom(-4, 4),
-                vy: getRandom(-4, 4),
-            },
-        ];
+        shapesRef.current = Array.from(
+            { length: TOTAL_SHAPES },
+            (_, i) => ({
+                id: i,
 
-        setShapes(initial);
+                x: getRandom(0, w - SHAPE_SIZE),
+                y: getRandom(0, h - SHAPE_SIZE),
 
-        setTimeout(() => setReady(true), 50);
+                vx: getRandom(-2, 2),
+                vy: getRandom(-2, 2),
+            })
+        );
     }, []);
 
-    // lógica de movimento e colisão
+    // MOUSE MOVE
     useEffect(() => {
-        if (!ready) return;
-
-        const interval = setInterval(() => {
-            setShapes(prev => {
-                const newShapes = prev.map(s => ({ ...s }));
-
-                const { w: screenW, h: screenH } = getSize();
-
-                for (let i = 0; i < newShapes.length; i++) {
-                    for (let j = i + 1; j < newShapes.length; j++) {
-                        const a = newShapes[i];
-                        const b = newShapes[j];
-
-                        const dx = a.x - b.x;
-                        const dy = a.y - b.y;
-
-                        const dist = Math.sqrt(dx * dx + dy * dy);
-                        const minDist = 50;
-
-                        if (dist < minDist && dist > 0) {
-                            const force = (minDist - dist) / minDist;
-
-                            const fx = (dx / dist) * force * 1.2;
-                            const fy = (dy / dist) * force * 1.2;
-
-                            a.vx += fx;
-                            a.vy += fy;
-
-                            b.vx -= fx;
-                            b.vy -= fy;
-                        }
-                    }
-                }
-
-                return newShapes.map(s => {
-                    let x = s.x + s.vx;
-                    let y = s.y + s.vy;
-
-                    let vx = s.vx;
-                    let vy = s.vy;
-
-                    if (x <= 0 || x >= screenW - 100) vx *= -1;
-                    if (y <= 0 || y >= screenH - 100) vy *= -1;
-
-                    return { ...s, x, y, vx, vy };
-                });
-            });
-        }, 16);
-
-        return () => clearInterval(interval);
-    }, [ready]);
-
-    // corrige mudança de orientação (evita bug de "zoom/pulo")
-    useEffect(() => {
-        const handleResize = () => {
-            window.dispatchEvent(new Event("resize"));
+        const handleMouseMove = (e) => {
+            mouse.current = {
+                x: e.clientX,
+                y: e.clientY
+            };
         };
 
-        window.addEventListener("orientationchange", handleResize);
+        window.addEventListener("mousemove", handleMouseMove);
 
         return () => {
-            window.removeEventListener("orientationchange", handleResize);
+            window.removeEventListener(
+                "mousemove",
+                handleMouseMove
+            );
+        };
+    }, []);
+
+    // ANIMATION LOOP
+    useEffect(() => {
+        const update = () => {
+            const { w, h } = getSize();
+
+            const shapes = shapesRef.current;
+
+            //
+            // PARTICLE INTERACTION
+            //
+            for (let i = 0; i < shapes.length; i++) {
+                for (let j = i + 1; j < shapes.length; j++) {
+                    const a = shapes[i];
+                    const b = shapes[j];
+
+                    const dx = a.x - b.x;
+                    const dy = a.y - b.y;
+
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+
+                    const minDist = 80;
+
+                    if (dist < minDist && dist > 0) {
+                        const force =
+                            (minDist - dist) / minDist;
+
+                        const fx =
+                            (dx / dist) * force * 0.08;
+
+                        const fy =
+                            (dy / dist) * force * 0.08;
+
+                        a.vx += fx;
+                        a.vy += fy;
+
+                        b.vx -= fx;
+                        b.vy -= fy;
+                    }
+                }
+            }
+
+            //
+            // UPDATE
+            //
+            for (let i = 0; i < shapes.length; i++) {
+                const s = shapes[i];
+
+                //
+                // MOVIMENTO CONSTANTE
+                //
+                s.vx += getRandom(-0.02, 0.02);
+                s.vy += getRandom(-0.02, 0.02);
+
+                //
+                // MOUSE FORCE
+                //
+                const dx = s.x - mouse.current.x;
+                const dy = s.y - mouse.current.y;
+
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                const radius = 180;
+
+                if (dist < radius && dist > 0) {
+                    const force =
+                        (radius - dist) / radius;
+
+                    s.vx +=
+                        (dx / dist) * force * 0.5;
+
+                    s.vy +=
+                        (dy / dist) * force * 0.5;
+                }
+
+                //
+                // DAMPING
+                //
+                s.vx *= 0.995;
+                s.vy *= 0.995;
+
+                //
+                // VELOCIDADE MÍNIMA
+                //
+                if (Math.abs(s.vx) < MIN_SPEED) {
+                    s.vx += s.vx >= 0
+                        ? 0.02
+                        : -0.02;
+                }
+
+                if (Math.abs(s.vy) < MIN_SPEED) {
+                    s.vy += s.vy >= 0
+                        ? 0.02
+                        : -0.02;
+                }
+
+                //
+                // SPEED LIMIT
+                //
+                s.vx = Math.max(
+                    -MAX_SPEED,
+                    Math.min(MAX_SPEED, s.vx)
+                );
+
+                s.vy = Math.max(
+                    -MAX_SPEED,
+                    Math.min(MAX_SPEED, s.vy)
+                );
+
+                //
+                // POSITION
+                //
+                s.x += s.vx;
+                s.y += s.vy;
+
+                //
+                // BOUNDS
+                //
+                if (s.x <= 0) {
+                    s.x = 0;
+                    s.vx *= -1;
+                }
+
+                if (s.x >= w - SHAPE_SIZE) {
+                    s.x = w - SHAPE_SIZE;
+                    s.vx *= -1;
+                }
+
+                if (s.y <= 0) {
+                    s.y = 0;
+                    s.vy *= -1;
+                }
+
+                if (s.y >= h - SHAPE_SIZE) {
+                    s.y = h - SHAPE_SIZE;
+                    s.vy *= -1;
+                }
+
+                //
+                // DOM UPDATE
+                //
+                const el = elementsRef.current[i];
+
+                if (el) {
+                    el.style.transform =
+                        `translate3d(${s.x}px, ${s.y}px, 0)`;
+                }
+            }
+
+            animationRef.current =
+                requestAnimationFrame(update);
+        };
+
+        animationRef.current =
+            requestAnimationFrame(update);
+
+        return () => {
+            cancelAnimationFrame(animationRef.current);
         };
     }, []);
 
     return (
         <div className="bg">
-            {shapes.map(s => (
+            {Array.from({
+                length: TOTAL_SHAPES
+            }).map((_, i) => (
                 <div
-                    key={s.id}
-                    className={`shape ${s.type}`}
-                    style={{
-                        transform: `translate(${s.x}px, ${s.y}px)`
-                    }}
+                    key={i}
+                    ref={(el) =>
+                        (elementsRef.current[i] = el)
+                    }
+                    className="shape circle"
                 />
             ))}
         </div>
