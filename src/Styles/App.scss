@@ -21,46 +21,17 @@
   will-change: transform;
   transition: transform 0.02s linear;
 
-  opacity: 0.85;
+  opacity: 1;
 
   animation: glowPulse 3s ease-in-out infinite alternate;
 }
 
 /* CÍRCULO */
 .circle {
-  width: 54px;
-  height: 54px;
+  width: 2rem;
+  height: 2rem;
   border-radius: 50%;
   box-shadow: 0 0 22px rgba(122, 242, 152, 0.5);
-}
-
-/* QUADRADO (NOVO) */
-.square {
-  width: 48px;
-  height: 48px;
-  background: $secondary;
-  box-shadow: 0 0 18px rgba(122, 242, 152, 0.5);
-}
-
-/* RETÂNGULO */
-.rect {
-  width: 70px;
-  height: 28px;
-  border-radius: 6px;
-  box-shadow: 0 0 18px rgba(122, 242, 152, 0.45);
-}
-
-/* TRIÂNGULO */
-.triangle {
-  width: 0;
-  height: 0;
-  background: transparent;
-
-  border-left: 22px solid transparent;
-  border-right: 22px solid transparent;
-  border-bottom: 38px solid $secondary;
-
-  filter: drop-shadow(0 0 16px rgba(122, 242, 152, 0.8));
 }
 
 @keyframes glowPulse {
