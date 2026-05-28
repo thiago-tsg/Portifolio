@@ -1,147 +1,82 @@
 @use "../Styles/index" as *;
 
-/* =========================
-   BACKGROUND BASE
-========================= */
-
 .bg {
   position: fixed;
   inset: 0;
   overflow: hidden;
   z-index: -1;
-
   background: $tertiary;
 }
-
-/* =========================
-   SHAPES BASE
-========================= */
 
 .shape {
   position: absolute;
 
-  width: 26px;
-  height: 26px;
+  width: 48px;
+  height: 48px;
 
   background: $secondary;
 
-  filter: drop-shadow(0 0 12px rgba(122, 242, 152, 0.85));
+  filter: drop-shadow(0 0 18px rgba(122, 242, 152, 0.7));
 
   will-change: transform;
   transition: transform 0.02s linear;
 
-  opacity: 0.9;
+  opacity: 0.85;
+
+  animation: glowPulse 3s ease-in-out infinite alternate;
 }
 
-/* =========================
-   VARIAÇÕES VISUAIS
-========================= */
-
-/* círculo maior */
+/* CÍRCULO */
 .circle {
-  width: 28px;
-  height: 28px;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
-
-  box-shadow: 0 0 18px rgba(122, 242, 152, 0.6);
+  box-shadow: 0 0 22px rgba(122, 242, 152, 0.5);
 }
 
-/* retângulo mais presente */
+/* QUADRADO (NOVO) */
+.square {
+  width: 48px;
+  height: 48px;
+  background: $secondary;
+  box-shadow: 0 0 18px rgba(122, 242, 152, 0.5);
+}
+
+/* RETÂNGULO */
 .rect {
-  width: 40px;
-  height: 18px;
-
-  border-radius: 4px;
-
-  box-shadow: 0 0 14px rgba(122, 242, 152, 0.5);
+  width: 70px;
+  height: 28px;
+  border-radius: 6px;
+  box-shadow: 0 0 18px rgba(122, 242, 152, 0.45);
 }
 
-/* triângulo maior */
+/* TRIÂNGULO */
 .triangle {
   width: 0;
   height: 0;
-
   background: transparent;
 
-  border-left: 14px solid transparent;
-  border-right: 14px solid transparent;
-  border-bottom: 24px solid $secondary;
+  border-left: 22px solid transparent;
+  border-right: 22px solid transparent;
+  border-bottom: 38px solid $secondary;
 
-  filter: drop-shadow(0 0 12px rgba(122, 242, 152, 0.85));
-}
-
-/* =========================
-   NOVA FORMA: LOSANGO (diamond)
-========================= */
-
-.diamond {
-  width: 22px;
-  height: 22px;
-
-  background: $secondary;
-
-  transform: rotate(45deg);
-
-  box-shadow: 0 0 14px rgba(122, 242, 152, 0.7);
-}
-
-/* =========================
-   NOVA FORMA: LINHA ENERGÉTICA
-========================= */
-
-.line {
-  width: 50px;
-  height: 4px;
-
-  background: $secondary;
-
-  box-shadow: 0 0 10px rgba(122, 242, 152, 0.6);
-
-  border-radius: 2px;
-}
-
-/* =========================
-   ANIMAÇÃO DE VIDA (SUAVE)
-========================= */
-
-.shape {
-  animation: glowPulse 2.8s ease-in-out infinite alternate;
+  filter: drop-shadow(0 0 16px rgba(122, 242, 152, 0.8));
 }
 
 @keyframes glowPulse {
   0% {
-    filter: drop-shadow(0 0 8px rgba(122, 242, 152, 0.4));
-    opacity: 0.75;
+    filter: drop-shadow(0 0 10px rgba(122, 242, 152, 0.35));
+    opacity: 0.7;
   }
 
   100% {
-    filter: drop-shadow(0 0 18px rgba(122, 242, 152, 0.95));
+    filter: drop-shadow(0 0 26px rgba(122, 242, 152, 0.95));
     opacity: 1;
   }
 }
 
-/* =========================
-   MOBILE
-========================= */
-
 @media (max-width: 768px) {
-  .shape {
-    width: 20px;
-    height: 20px;
-  }
-
-  .rect {
-    width: 30px;
-    height: 14px;
-  }
-
-  .triangle {
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 18px solid $secondary;
-  }
-
-  .line {
-    width: 36px;
+  .bg {
+    display: none;
   }
 }

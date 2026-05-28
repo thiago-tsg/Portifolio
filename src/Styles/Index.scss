@@ -7,14 +7,15 @@ $primary: #f4f4f4; // Branco
 $secondary: #7af298; // Verde claro
 $tertiary: #000000; // Preto
 
-html {
+html, body {
   scroll-behavior: smooth;
 }
 
 //Reset Geral
 body {
-  overflow-x: hidden;
   background-color: black;
+  overflow-x: hidden;
+  touch-action: none;
 }
 
 * {
