@@ -127,6 +127,8 @@
     .section-skilss-resume {
       flex-wrap: wrap;
       .cg-skills {
+        width: 100%;
+
         .c-skills {
           flex-direction: column;
           gap: 3rem;
@@ -135,6 +137,10 @@
             width: 100%;
 
             ul {
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              gap: 1rem;
+
               li {
                 flex-wrap: wrap;
                 align-items: start;
@@ -147,6 +153,10 @@
       .cg-resumo {
         :nth-child(1) {
           font-size: 1rem;
+        }
+
+        .btn {
+          width: 100%;
         }
       }
     }
