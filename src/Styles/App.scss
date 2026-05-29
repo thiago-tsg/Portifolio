@@ -1,52 +1,18 @@
 @use "../Styles/index" as *;
 
-.bg {
+.background-canvas {
   position: fixed;
+
   inset: 0;
-  overflow: hidden;
+
+  width: 100%;
+  height: 100%;
+
   z-index: -1;
+
   background: $tertiary;
-}
 
-.shape {
-  position: absolute;
+  pointer-events: none;
 
-  width: 48px;
-  height: 48px;
-
-  background: $secondary;
-
-  filter: drop-shadow(0 0 18px rgba(122, 242, 152, 0.7));
-
-  will-change: transform;
-
-  opacity: 1;
-
-  animation: glowPulse 3s ease-in-out infinite alternate;
-}
-
-/* CÍRCULO */
-.circle {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  box-shadow: 0 0 22px rgba(122, 242, 152, 0.5);
-}
-
-@keyframes glowPulse {
-  0% {
-    filter: drop-shadow(0 0 10px rgba(122, 242, 152, 0.35));
-    opacity: 0.7;
-  }
-
-  100% {
-    filter: drop-shadow(0 0 26px rgba(122, 242, 152, 0.95));
-    opacity: 1;
-  }
-}
-
-@media (max-width: 768px) {
-  .bg {
-    display: none;
-  }
+  display: block;
 }

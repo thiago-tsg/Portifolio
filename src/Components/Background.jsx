@@ -1,60 +1,219 @@
 import { useEffect, useRef } from "react";
 
-const SHAPE_SIZE = 32;
-const TOTAL_SHAPES = 12;
+import "../Styles/App.scss";
 
-const MAX_SPEED = 3;
-const MIN_SPEED = 0.3;
-
-const getRandom = (min, max) => Math.random() * (max - min) + min;
-
-const getSize = () => ({
-    w: window.innerWidth,
-    h: window.innerHeight
-});
+const PARTICLE_COUNT = 140;
+const CONNECT_DISTANCE = 100;
+const MOUSE_DISTANCE = 140;
 
 export default function Background() {
-    const animationRef = useRef();
+    const canvasRef = useRef(null);
 
-    const mouse = useRef({
-        x: window.innerWidth / 2,
-        y: window.innerHeight / 2
-    });
-
-    const shapesRef = useRef([]);
-
-    const elementsRef = useRef([]);
-
-    // INITIALIZE SHAPES
     useEffect(() => {
-        const { w, h } = getSize();
+        const canvas = canvasRef.current;
+        const ctx = canvas.getContext("2d");
 
-        shapesRef.current = Array.from(
-            { length: TOTAL_SHAPES },
-            (_, i) => ({
-                id: i,
+        let width = window.innerWidth;
+        let height = window.innerHeight;
 
-                x: getRandom(0, w - SHAPE_SIZE),
-                y: getRandom(0, h - SHAPE_SIZE),
+        // RESOLUTION FIX
+        const setCanvasSize = () => {
+            const dpr = window.devicePixelRatio || 1;
 
-                vx: getRandom(-2, 2),
-                vy: getRandom(-2, 2),
-            })
-        );
-    }, []);
+            width = window.innerWidth;
+            height = window.innerHeight;
 
-    // MOUSE MOVE
-    useEffect(() => {
-        const handleMouseMove = (e) => {
-            mouse.current = {
-                x: e.clientX,
-                y: e.clientY
-            };
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+
+            canvas.style.width = `${width}px`;
+            canvas.style.height = `${height}px`;
+
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         };
 
-        window.addEventListener("mousemove", handleMouseMove);
+        setCanvasSize();
 
+        // MOUSE
+        const mouse = {
+            x: width / 2,
+            y: height / 2,
+        };
+
+        const handleMouseMove = (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        };
+
+        // PARTICLES
+        const particles = Array.from(
+            { length: PARTICLE_COUNT },
+            () => ({
+                x: Math.random() * width,
+                y: Math.random() * height,
+
+                vx: (Math.random() - 0.5) * 1.2,
+                vy: (Math.random() - 0.5) * 1.2,
+
+                radius: Math.random() * 2 + 1,
+            })
+        );
+
+        let animationFrame;
+
+        const animate = () => {
+            ctx.clearRect(0, 0, width, height);
+
+            // UPDATE PARTICLES
+            for (const p of particles) {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                // INTERAÇÃO COM MOUSE
+                const dxMouse = p.x - mouse.x;
+                const dyMouse = p.y - mouse.y;
+
+                const distMouseSq =
+                    dxMouse * dxMouse +
+                    dyMouse * dyMouse;
+
+                if (
+                    distMouseSq <
+                    MOUSE_DISTANCE * MOUSE_DISTANCE
+                ) {
+                    const dist = Math.sqrt(distMouseSq) || 1;
+
+                    const force =
+                        (MOUSE_DISTANCE - dist) /
+                        MOUSE_DISTANCE;
+
+                    p.vx +=
+                        (dxMouse / dist) * force * 0.08;
+
+                    p.vy +=
+                        (dyMouse / dist) * force * 0.08;
+                }
+
+                // DAMPING
+                p.vx *= 0.99;
+                p.vy *= 0.99;
+
+                // BOUNDS
+                if (p.x <= 0 || p.x >= width)
+                    p.vx *= -1;
+
+                if (p.y <= 0 || p.y >= height)
+                    p.vy *= -1;
+            }
+
+            // CONNECTIONS
+            ctx.lineWidth = 1;
+            ctx.shadowBlur = 0;
+
+            for (let i = 0; i < particles.length; i++) {
+                const p1 = particles[i];
+
+                // LINHA COM MOUSE
+                const mdx = p1.x - mouse.x;
+                const mdy = p1.y - mouse.y;
+
+                const mouseDist = Math.sqrt(
+                    mdx * mdx + mdy * mdy
+                );
+
+                if (mouseDist < CONNECT_DISTANCE) {
+                    const opacity =
+                        1 -
+                        mouseDist / CONNECT_DISTANCE;
+
+                    ctx.beginPath();
+
+                    ctx.moveTo(p1.x, p1.y);
+                    ctx.lineTo(mouse.x, mouse.y);
+
+                    ctx.strokeStyle = `rgba(122,242,152,${opacity * 0.5})`;
+
+                    ctx.stroke();
+                }
+
+                // LINHAS ENTRE PARTICULAS
+                for (
+                    let j = i + 1;
+                    j < particles.length;
+                    j++
+                ) {
+                    const p2 = particles[j];
+
+                    const dx = p1.x - p2.x;
+                    const dy = p1.y - p2.y;
+
+                    const distSq = dx * dx + dy * dy;
+
+                    if (
+                        distSq <
+                        CONNECT_DISTANCE *
+                            CONNECT_DISTANCE
+                    ) {
+                        const opacity =
+                            1 -
+                            distSq /
+                                (CONNECT_DISTANCE *
+                                    CONNECT_DISTANCE);
+
+                        ctx.beginPath();
+
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
+
+                        ctx.strokeStyle = `rgba(122,242,152,${opacity * 0.25})`;
+
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            // DRAW PARTICLES
+            for (const p of particles) {
+                ctx.beginPath();
+
+                ctx.arc(
+                    p.x,
+                    p.y,
+                    p.radius,
+                    0,
+                    Math.PI * 2
+                );
+
+                ctx.fillStyle = "#7AF298";
+                ctx.fill();
+            }
+
+            animationFrame =
+                requestAnimationFrame(animate);
+        };
+
+        animate();
+
+        // EVENTS
+        window.addEventListener(
+            "resize",
+            setCanvasSize
+        );
+
+        window.addEventListener(
+            "mousemove",
+            handleMouseMove
+        );
+
+        // CLEANUP
         return () => {
+            cancelAnimationFrame(animationFrame);
+
+            window.removeEventListener(
+                "resize",
+                setCanvasSize
+            );
+
             window.removeEventListener(
                 "mousemove",
                 handleMouseMove
@@ -62,179 +221,10 @@ export default function Background() {
         };
     }, []);
 
-    // ANIMATION LOOP
-    useEffect(() => {
-        const update = () => {
-            const { w, h } = getSize();
-
-            const shapes = shapesRef.current;
-
-            //
-            // PARTICLE INTERACTION
-            //
-            for (let i = 0; i < shapes.length; i++) {
-                for (let j = i + 1; j < shapes.length; j++) {
-                    const a = shapes[i];
-                    const b = shapes[j];
-
-                    const dx = a.x - b.x;
-                    const dy = a.y - b.y;
-
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-
-                    const minDist = 80;
-
-                    if (dist < minDist && dist > 0) {
-                        const force =
-                            (minDist - dist) / minDist;
-
-                        const fx =
-                            (dx / dist) * force * 0.08;
-
-                        const fy =
-                            (dy / dist) * force * 0.08;
-
-                        a.vx += fx;
-                        a.vy += fy;
-
-                        b.vx -= fx;
-                        b.vy -= fy;
-                    }
-                }
-            }
-
-            //
-            // UPDATE
-            //
-            for (let i = 0; i < shapes.length; i++) {
-                const s = shapes[i];
-
-                //
-                // MOVIMENTO CONSTANTE
-                //
-                s.vx += getRandom(-0.02, 0.02);
-                s.vy += getRandom(-0.02, 0.02);
-
-                //
-                // MOUSE FORCE
-                //
-                const dx = s.x - mouse.current.x;
-                const dy = s.y - mouse.current.y;
-
-                const dist = Math.sqrt(dx * dx + dy * dy);
-
-                const radius = 180;
-
-                if (dist < radius && dist > 0) {
-                    const force =
-                        (radius - dist) / radius;
-
-                    s.vx +=
-                        (dx / dist) * force * 0.5;
-
-                    s.vy +=
-                        (dy / dist) * force * 0.5;
-                }
-
-                //
-                // DAMPING
-                //
-                s.vx *= 0.995;
-                s.vy *= 0.995;
-
-                //
-                // VELOCIDADE MÍNIMA
-                //
-                if (Math.abs(s.vx) < MIN_SPEED) {
-                    s.vx += s.vx >= 0
-                        ? 0.02
-                        : -0.02;
-                }
-
-                if (Math.abs(s.vy) < MIN_SPEED) {
-                    s.vy += s.vy >= 0
-                        ? 0.02
-                        : -0.02;
-                }
-
-                //
-                // SPEED LIMIT
-                //
-                s.vx = Math.max(
-                    -MAX_SPEED,
-                    Math.min(MAX_SPEED, s.vx)
-                );
-
-                s.vy = Math.max(
-                    -MAX_SPEED,
-                    Math.min(MAX_SPEED, s.vy)
-                );
-
-                //
-                // POSITION
-                //
-                s.x += s.vx;
-                s.y += s.vy;
-
-                //
-                // BOUNDS
-                //
-                if (s.x <= 0) {
-                    s.x = 0;
-                    s.vx *= -1;
-                }
-
-                if (s.x >= w - SHAPE_SIZE) {
-                    s.x = w - SHAPE_SIZE;
-                    s.vx *= -1;
-                }
-
-                if (s.y <= 0) {
-                    s.y = 0;
-                    s.vy *= -1;
-                }
-
-                if (s.y >= h - SHAPE_SIZE) {
-                    s.y = h - SHAPE_SIZE;
-                    s.vy *= -1;
-                }
-
-                //
-                // DOM UPDATE
-                //
-                const el = elementsRef.current[i];
-
-                if (el) {
-                    el.style.transform =
-                        `translate3d(${s.x}px, ${s.y}px, 0)`;
-                }
-            }
-
-            animationRef.current =
-                requestAnimationFrame(update);
-        };
-
-        animationRef.current =
-            requestAnimationFrame(update);
-
-        return () => {
-            cancelAnimationFrame(animationRef.current);
-        };
-    }, []);
-
     return (
-        <div className="bg">
-            {Array.from({
-                length: TOTAL_SHAPES
-            }).map((_, i) => (
-                <div
-                    key={i}
-                    ref={(el) =>
-                        (elementsRef.current[i] = el)
-                    }
-                    className="shape circle"
-                />
-            ))}
-        </div>
+        <canvas
+            ref={canvasRef}
+            className="background-canvas"
+        />
     );
 }
