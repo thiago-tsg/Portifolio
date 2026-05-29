@@ -12,8 +12,6 @@ import Curriculo from "./Curriculo";
 
 import Background from "./Background";
 
-import '../Styles/App.scss'
-
 // ScrollToTop (igual ao seu)
 const ScrollToTop = () => {
   const { pathname, hash } = useLocation();
