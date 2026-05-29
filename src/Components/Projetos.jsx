@@ -111,6 +111,23 @@ const Projetos = () => {
     const [ativo, setAtivo] = useState(null);
     const [index, setIndex] = useState(0);
     const [caseAtivo, setCaseAtivo] = useState(null);
+    const [touchStart, setTouchStart] = useState(0);
+    const [touchEnd, setTouchEnd] = useState(0);
+    const handleTouchStart = (e) => {
+        setTouchStart(e.targetTouches[0].clientX);
+    };
+    const handleTouchMove = (e) => {
+        setTouchEnd(e.targetTouches[0].clientX);
+    };
+    const handleTouchEnd = () => {
+        if (touchStart - touchEnd > 50) {
+            next();
+        }
+
+        if (touchStart - touchEnd < -50) {
+            prev();
+        }
+    };
 
     // Intersection Observer para animação de entrada e efeito de brilho no cursor nos cards
     useEffect(() => {
@@ -199,7 +216,12 @@ const Projetos = () => {
                     >
                         <h2>{ativo.nome}</h2>
 
-                        <div className="carousel">
+                        <div
+                            className="carousel"
+                            onTouchStart={handleTouchStart}
+                            onTouchMove={handleTouchMove}
+                            onTouchEnd={handleTouchEnd}
+                        >
                             <button className="prev btn" onClick={prev}>
                                 ‹
                             </button>

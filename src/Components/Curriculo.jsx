@@ -32,7 +32,7 @@ const Curriculo = () => {
     }, []);
 
     return (
-        <section className="cg-curriculo flex-colum">
+        <section className="cg-curriculo container flex-colum">
 
             {/* BOTÃO VOLTAR */}
             <button className="btn" onClick={() => {
