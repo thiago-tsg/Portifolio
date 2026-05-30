@@ -36,6 +36,8 @@
       }
 
       .skills {
+        display: flex;
+        gap: .5rem;
         flex-wrap: wrap;
 
         span {
