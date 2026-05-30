@@ -11,6 +11,10 @@
   width: 100%;
   z-index: 1000;
 
+  background-color: rgba(0, 0, 0, 0.178);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
   h1 {
     font-family: "Shadows Into Light", cursive;
   }
@@ -47,9 +51,9 @@
         opacity: 1;
         transform: translateY(0);
         pointer-events: auto;
-        margin: .5rem 0 0 0;
-        background-color: black;
-
+        margin: 0.5rem 0 0 0;
+        background-color: rgba(0, 0, 0, 0.726);
+        backdrop-filter: blur(5px);
       }
     }
   }

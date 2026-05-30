@@ -70,7 +70,7 @@ const Header = () => {
                     <div className="TelEmail flex-colum gap-p">
                         <p>
                             <span>Cel: </span>
-                            <a href="tel:+5511953606595">(11) 95360-6595</a>
+                            <a href="tel:+5511966594071">(11) 96659-4071</a>
                         </p>
                         <p>
                             <span>Email: </span>
@@ -96,7 +96,7 @@ const Header = () => {
                             <a href="https://www.linkedin.com/in/tsg-view" target="_blank" rel="noopener noreferrer">
                                 <FaLinkedin />
                             </a>
-                            <a href="https://wa.me/5511953606595" target="_blank" rel="noopener noreferrer">
+                            <a href="https://wa.me/5511966594071" target="_blank" rel="noopener noreferrer">
                                 <FaWhatsapp />
                             </a>
                             <a href="https://www.instagram.com/thiago_sg/" target="_blank" rel="noopener noreferrer">

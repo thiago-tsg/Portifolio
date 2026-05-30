@@ -113,6 +113,7 @@
 
 @media (max-width: 768px) {
   .cg-footer {
+    margin-top: 0rem;
     .c-link-footer {
       flex-direction: column;
 
@@ -122,6 +123,12 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+      }
+    }
+
+    .credito{
+      a{
+        color: white;
       }
     }
   }

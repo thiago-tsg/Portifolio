@@ -24,11 +24,14 @@
   /* GRID */
   .grid-curriculo {
     .bloco {
-      h2, h3 {
+      h2,
+      h3 {
         font-size: 1.2rem;
       }
 
-      p, li, span{
+      p,
+      li,
+      span {
         font-size: 1rem;
       }
 
@@ -128,6 +131,15 @@
 
 @media (max-width: 768px) {
   .cg-curriculo {
+    .btn {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      transition: 0.25s;
+
+      align-self: flex-end;
+      margin-bottom: 2rem;
+    }
 
     .topo {
       .cargo {
@@ -138,11 +150,14 @@
 
     .grid-curriculo {
       .bloco {
-        h2, h3 {
+        h2,
+        h3 {
           font-size: 1rem;
         }
 
-        p, li, span{
+        p,
+        li,
+        span {
           font-size: 0.9rem;
         }
       }
