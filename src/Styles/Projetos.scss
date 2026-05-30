@@ -28,12 +28,10 @@
       overflow: hidden;
       padding: 1rem;
       background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(14px);
       border: 1px solid rgba(122, 242, 152, 0.1);
       aspect-ratio: 16 / 10;
       opacity: 0;
       transform: translateY(40px);
-      filter: blur(10px);
 
       transition:
         opacity 0.8s ease,
@@ -47,21 +45,6 @@
       &.show {
         opacity: 1;
         transform: translateY(0);
-        filter: blur(0);
-      }
-
-      &::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: radial-gradient(
-          circle at var(--x) var(--y),
-          rgba(122, 242, 152, 0.25),
-          transparent 60%
-        );
-        opacity: 0;
-        transition: 0.3s;
-        z-index: 1;
       }
 
       img {
@@ -85,8 +68,6 @@
           rgba(0, 0, 0, 0.3) 40%,
           transparent 70%
         );
-
-        backdrop-filter: blur(6px);
 
         opacity: 0;
         transform: translateY(40px);
@@ -134,7 +115,6 @@
     position: fixed;
     inset: 0;
     background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(0.8rem);
     animation: fadeIn 0.4s ease;
     z-index: 1000;
 
@@ -254,8 +234,6 @@
           border-radius: 14px;
           padding: 1.2rem 1.4rem;
 
-          backdrop-filter: blur(10px);
-
           transition: 0.3s ease;
 
           &:hover {
@@ -363,12 +341,10 @@
         .overlay {
           opacity: 1;
           justify-content: center;
-          backdrop-filter: blur(2px);
           transform: translateY(0px);
 
           p {
             background-color: #0000006e;
-            backdrop-filter: blur(100px);
             padding: 0.5rem 1rem;
             border-radius: 10px;
             width: fit-content;
