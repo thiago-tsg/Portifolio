@@ -14,8 +14,7 @@ html, body {
 //Reset Geral
 body {
   background-color: black;
-  overflow-x: hidden;
-  touch-action: none;
+  touch-action: auto;
 }
 
 * {
