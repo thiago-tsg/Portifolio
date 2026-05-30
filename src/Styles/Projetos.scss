@@ -141,15 +141,12 @@
     .modal-content {
       background: #111;
       border: 1px solid rgba(255, 255, 255, 0.08);
-
+      position: relative;
       padding: 1.5rem;
       border-radius: 1.2rem;
-
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
-
       transform: scale(0.96);
       animation: scaleIn 0.35s ease forwards;
-
       min-width: 50rem;
       overflow-y: auto;
       gap: 2rem;
@@ -300,31 +297,28 @@
       }
 
       .close-btn {
-        position: fixed;
-        top: 0.5rem;
-        right: 1.5rem;
-        padding: 0.5rem;
-        border-radius: 50%;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+
         width: 2.5rem;
         height: 2.5rem;
-        transition: 0.3s;
 
-        &:hover {
-          color: #000;
-          transform: translateY(-2px);
-        }
-      }
-
-      .close-btn {
-        margin-top: 1rem;
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
+        border-radius: 50%;
         border: 1px solid $secondary;
+
         background: transparent;
         color: $secondary;
+
         cursor: pointer;
+        transition: 0.3s;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         &:hover {
+          transform: scale(1.1);
           color: $secondary;
         }
       }
@@ -346,6 +340,24 @@
 
 @media (max-width: 768px) {
   .cg-projetos {
+    .projetos-grid {
+      .projeto-card {
+        .overlay {
+          opacity: 1;
+          justify-content: center;
+          backdrop-filter: blur(2px);
+          transform: translateY(0px);
+
+          p {
+            background-color: #0000006e;
+            backdrop-filter: blur(100px);
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            width: fit-content;
+          }
+        }
+      }
+    }
     .modal {
       .modal-content {
         min-width: 90%;

@@ -238,6 +238,12 @@ const Projetos = () => {
                         className="modal-content"
                         onClick={(e) => e.stopPropagation()}
                     >
+                        <button
+                            className="close-btn"
+                            onClick={() => setAtivo(null)}
+                        >
+                            X
+                        </button>
                         <h2>{ativo.nome}</h2>
 
                         <div
