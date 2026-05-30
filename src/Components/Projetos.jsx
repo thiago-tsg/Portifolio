@@ -133,23 +133,47 @@ const Projetos = () => {
     useEffect(() => {
         const cards = document.querySelectorAll(".projeto-card");
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("show");
-                }
-            });
-        });
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                threshold: 0.2,
+            }
+        );
 
         cards.forEach((card) => observer.observe(card));
 
+        const handleMouseMove = (e) => {
+            const rect = e.currentTarget.getBoundingClientRect();
+
+            e.currentTarget.style.setProperty(
+                "--x",
+                `${e.clientX - rect.left}px`
+            );
+
+            e.currentTarget.style.setProperty(
+                "--y",
+                `${e.clientY - rect.top}px`
+            );
+        };
+
         cards.forEach((card) => {
-            card.addEventListener("mousemove", (e) => {
-                const rect = card.getBoundingClientRect();
-                card.style.setProperty("--x", `${e.clientX - rect.left}px`);
-                card.style.setProperty("--y", `${e.clientY - rect.top}px`);
-            });
+            card.addEventListener("mousemove", handleMouseMove);
         });
+
+        return () => {
+            observer.disconnect();
+
+            cards.forEach((card) => {
+                card.removeEventListener("mousemove", handleMouseMove);
+            });
+        };
     }, []);
 
     // Fechar modais com ESC

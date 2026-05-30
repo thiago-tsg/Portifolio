@@ -31,6 +31,14 @@
       backdrop-filter: blur(14px);
       border: 1px solid rgba(122, 242, 152, 0.1);
       aspect-ratio: 16 / 10;
+      opacity: 0;
+      transform: translateY(40px);
+      filter: blur(10px);
+
+      transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        filter 0.8s ease;
 
       &:hover {
         transform: translateY(-6px) scale(1.02);
@@ -38,7 +46,7 @@
 
       &.show {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateY(0);
         filter: blur(0);
       }
 
