@@ -9,7 +9,6 @@ import { FaGithub, FaLinkedin, FaWhatsapp, FaInstagram } from "react-icons/fa";
 
 // Componentes
 
-
 // Styles
 import '../Styles/Header.scss';
 
@@ -70,11 +69,11 @@ const Header = () => {
                     <div className="TelEmail flex-colum gap-p">
                         <p>
                             <span>Cel: </span>
-                            <a href="tel:+5511966594071">(11) 96659-4071</a>
+                            <a href="https://wa.me/5511966594071" target="_blank" rel="noopener noreferrer">(11) 96659-4071</a>
                         </p>
                         <p>
                             <span>Email: </span>
-                            <a href="mailto:thiago@email.com">
+                            <a href="mailto:t.goncalves1999@gmail.com">
                                 t.goncalves1999@gmail.com
                             </a>
                         </p>
