@@ -26,6 +26,26 @@ import tecnaDesktop from '../assets/projetos/desktop-tecna.png'
 import tecnaTablet from '../assets/projetos/tablet-tecna.png'
 import tecnaMobile from '../assets/projetos/mobile-tecna.png'
 
+// Cimetec
+import cimetecDesktop from '../assets/projetos/desktop-cimetec.png'
+import cimetecTablet from '../assets/projetos/tablet-cimetec.png'
+import cimetecMobile from '../assets/projetos/mobile-cimetec.png'
+
+// Santa Clara
+import santaDesktop from '../assets/projetos/desktop-santa-clara.png'
+import santaTablet from '../assets/projetos/tablet-santa-clara.png'
+import santaMobile from '../assets/projetos/mobile-santa-clara.png'
+
+// Casa Bertolazzi
+import bertolazziDesktop from '../assets/projetos/desktop-casa-bertolazzi.png'
+import bertolazziTablet from '../assets/projetos/tablet-casa-bertolazzi.png'
+import bertolazziMobile from '../assets/projetos/mobile-casa-bertolazzi.png'
+
+// Timer Fight
+import TimerFightDesktop from '../assets/projetos/desktop-timer-fight.png'
+import TimerFightTablet from '../assets/projetos/tablet-timer-fight.png'
+import TimerFightMobile from '../assets/projetos/mobile-timer-fight.png'
+
 // Dados dos projetos
 const projetos = [
     // F4L
@@ -99,6 +119,86 @@ const projetos = [
         ],
         link: "https://tecna.com.br/",
         github: " https://thiago-tsg.github.io/Tecna/",
+        case: {
+            problema: "Desenvolvimento sob alto nível de exigência estética e técnica, com múltiplas validações e ajustes finos durante o processo.",
+
+            solucao: "Entreguei um site institucional alinhado com o posicionamento da agência, focado em autoridade digital, performance e clareza na comunicação dos serviços.",
+
+            tecnologias: "HTML, SCSS, JavaScript, Gulp"
+        }
+    },
+
+    //Cimetec
+    {
+        nome: "Cimetec",
+        descricao: "Fabricante de poltronas para cinema.",
+        imagens: [
+            cimetecDesktop,
+            cimetecTablet,
+            cimetecMobile,
+        ],
+        link: "#",
+        github: " https://thiago-tsg.github.io/Cimetec/",
+        case: {
+            problema: "Desenvolvimento sob alto nível de exigência estética e técnica, com múltiplas validações e ajustes finos durante o processo.",
+
+            solucao: "Entreguei um site institucional alinhado com o posicionamento da agência, focado em autoridade digital, performance e clareza na comunicação dos serviços.",
+
+            tecnologias: "HTML, SCSS, JavaScript, Gulp"
+        }
+    },
+
+    //Santa Clara
+    {
+        nome: "Santa Clara",
+        descricao: "Fabricante de poltronas para cinema.",
+        imagens: [
+            santaDesktop,
+            santaTablet,
+            santaMobile,
+        ],
+        link: "#",
+        github: " https://thiago-tsg.github.io/santa-clara/",
+        case: {
+            problema: "Desenvolvimento sob alto nível de exigência estética e técnica, com múltiplas validações e ajustes finos durante o processo.",
+
+            solucao: "Entreguei um site institucional alinhado com o posicionamento da agência, focado em autoridade digital, performance e clareza na comunicação dos serviços.",
+
+            tecnologias: "HTML, SCSS, JavaScript, Gulp"
+        }
+    },
+
+    //Casa Bertolazzi
+    {
+        nome: "Casa bertolazzi",
+        descricao: "Fabricante de poltronas para cinema.",
+        imagens: [
+            bertolazziDesktop,
+            bertolazziTablet,
+            bertolazziMobile,
+        ],
+        link: "#",
+        github: " https://thiago-tsg.github.io/casa-bertolazzi/",
+        case: {
+            problema: "Desenvolvimento sob alto nível de exigência estética e técnica, com múltiplas validações e ajustes finos durante o processo.",
+
+            solucao: "Entreguei um site institucional alinhado com o posicionamento da agência, focado em autoridade digital, performance e clareza na comunicação dos serviços.",
+
+            tecnologias: "HTML, SCSS, JavaScript, Gulp"
+        }
+    },
+
+    //Timer Fight
+    {
+        nome: "Timer Fight",
+        descricao: "Fabricante de poltronas para cinema.",
+        imagens: [
+            TimerFightDesktop,
+            TimerFightTablet,
+            TimerFightMobile,
+        ],
+        link: "#",
+        github: "https://github.com/thiago-tsg/Timer-Fight/",
         case: {
             problema: "Desenvolvimento sob alto nível de exigência estética e técnica, com múltiplas validações e ajustes finos durante o processo.",
 
