@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 
 // F4L
 import fightDesktop from '../assets/projetos/desktop-fight-for-life.png'
+import fightTablet from '../assets/projetos/tablet-fight-for-life.png'
 import fightMobile from '../assets/projetos/mobile-fight-for-life.png'
 
 // Palazzo Prado
@@ -33,10 +34,11 @@ const projetos = [
         descricao: "Academia de lutas.",
         imagens: [
             fightDesktop,
+            fightTablet,
             fightMobile,
         ],
         link: "https://www.fight4life.com.br/",
-        github: "https://github.com/seuuser/fight-for-life",
+        github: "#",
         case: {
             problema: "A academia não possuía um sistema digital estruturado para aquisição e gestão de alunos, limitando vendas e automação de processos.",
 
@@ -56,7 +58,7 @@ const projetos = [
             palazzoMobile,
         ],
         link: "https://www.palazzoprado.com.br/",
-        github: "#",
+        github: "https://thiago-tsg.github.io/Palazzo-Prado/",
         case: {
             problema: "Necessidade de entregar um site institucional de alto padrão em curto prazo, mantendo alinhamento com identidade visual sofisticada do cliente.",
 
@@ -96,7 +98,7 @@ const projetos = [
             tecnaMobile,
         ],
         link: "https://tecna.com.br/",
-        github: "#",
+        github: " https://thiago-tsg.github.io/Tecna/",
         case: {
             problema: "Desenvolvimento sob alto nível de exigência estética e técnica, com múltiplas validações e ajustes finos durante o processo.",
 
