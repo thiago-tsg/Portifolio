@@ -296,7 +296,7 @@ const Projetos = () => {
             window.removeEventListener("resize", handleResize);
         };
     }, []);
-    
+
     // Intersection Observer para animação de entrada e efeito de brilho no cursor nos cards
     useEffect(() => {
         const cards = document.querySelectorAll(".projeto-card");
@@ -363,7 +363,7 @@ const Projetos = () => {
     }, [ativo, caseAtivo]);
 
     // Funções para navegação do carrossel de imagens no modal
-    
+
 
     return (
         <section className="cg-projetos container" id="projects">
@@ -405,6 +405,7 @@ const Projetos = () => {
                             setIndex(0);
                         }}
                     >
+
                         <img src={proj.imagens[0]} alt={proj.nome} />
 
                         <div className="overlay">
@@ -440,7 +441,9 @@ const Projetos = () => {
                             <button className="prev btn" onClick={prev}>
                                 ‹
                             </button>
-                            <img src={ativo.imagens[index]} />
+                            <div className="c-img-modal flex-center ">
+                                <img src={ativo.imagens[index]} />
+                            </div>
                             <button className="next btn" onClick={next}>
                                 ›
                             </button>

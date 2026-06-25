@@ -21,7 +21,8 @@
     }
   }
 
-  .carousel-controls,  button:disabled {
+  .carousel-controls,
+  button:disabled {
     opacity: 0.3;
     cursor: not-allowed;
     margin-bottom: 1rem;
@@ -146,11 +147,15 @@
         position: relative;
         margin: 2rem 0;
 
-        img {
+        .c-img-modal {
           width: 100%;
-          max-height: 450px;
-          object-fit: contain;
-          border-radius: 10px;
+          height: 350px;
+
+          img {
+            width: 80%;
+            object-fit: cover;
+            border-radius: 10px;
+          }
         }
 
         .btn {
@@ -324,7 +329,7 @@
 
 @media (max-width: 768px) {
   .cg-projetos {
-    .carousel-controls{
+    .carousel-controls {
       display: none;
     }
     .projetos-grid {
