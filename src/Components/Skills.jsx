@@ -47,26 +47,26 @@ const Skills = () => {
                         <div className="skills__card">
                             <h3>Frontend</h3>
                             <ul>
-                                <li><FaHtml5 /> HTML5</li>
-                                <li><FaCss3Alt /> CSS3 / SCSS</li>
-                                <li><SiJavascript /> JavaScript</li>
-                                <li><FaReact /> React.js</li>
-                                <li><FaWordpress /> WordPress</li>
+                                <li><FaHtml5 aria-hidden="true" /> HTML5</li>
+                                <li><FaCss3Alt aria-hidden="true" /> CSS3 / SCSS</li>
+                                <li><SiJavascript aria-hidden="true" /> JavaScript</li>
+                                <li><FaReact aria-hidden="true" /> React.js</li>
+                                <li><FaWordpress aria-hidden="true" /> WordPress</li>
                             </ul>
                         </div>
                         <div className="skills__card">
                             <h3>Backend & APIs</h3>
                             <ul>
-                                <li><FaNodeJs /> Node.js</li>
+                                <li><FaNodeJs aria-hidden="true" /> Node.js</li>
                                 <li>⚡ Express.js</li>
-                                <li><SiFirebase /> Firebase</li>
+                                <li><SiFirebase aria-hidden="true" /> Firebase</li>
                             </ul>
                         </div>
                         <div className="skills__card">
                             <h3>Tools & Design</h3>
                             <ul>
-                                <li><FaGitAlt /> Git & GitHub</li>
-                                <li><SiFigma /> Figma</li>
+                                <li><FaGitAlt aria-hidden="true" /> Git & GitHub</li>
+                                <li><SiFigma aria-hidden="true" /> Figma</li>
                                 <li>🎨 Photoshop</li>
                             </ul>
                         </div>

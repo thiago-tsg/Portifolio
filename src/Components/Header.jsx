@@ -62,7 +62,7 @@ const Header = () => {
                         <span className="cursor">|</span>
                     </p>
 
-                    <h3>Thiago Silva Gonçalves</h3>
+                    <h1>Thiago Silva Gonçalves</h1>
                 </div>
 
                 <div className="c-info-header grid gap-lg">
@@ -89,16 +89,16 @@ const Header = () => {
                         </p>
 
                         <div className="social flex space-between">
-                            <a href="https://github.com/thiago-tsg" target="_blank" rel="noopener noreferrer">
+                            <a href="https://github.com/thiago-tsg" target="_blank" rel="noopener noreferrer" aria-label="Github de Thiago">
                                 <FaGithub />
                             </a>
-                            <a href="https://www.linkedin.com/in/tsg-view" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.linkedin.com/in/tsg-view" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Thiago">
                                 <FaLinkedin />
                             </a>
-                            <a href="https://wa.me/5511966594071" target="_blank" rel="noopener noreferrer">
+                            <a href="https://wa.me/5511966594071" target="_blank" rel="noopener noreferrer" aria-label="Whatsapp de Thiago">
                                 <FaWhatsapp />
                             </a>
-                            <a href="https://www.instagram.com/thiago_sg/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.instagram.com/thiago_sg/" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Thiago">
                                 <FaInstagram />
                             </a>
                         </div>

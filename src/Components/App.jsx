@@ -41,24 +41,23 @@ const App = () => {
 
       <ScrollToTop />
 
-      <section>
-        <ButtonWhats />
-
-        <Routes>
-          <Route path="/" element={
-            <>
-              <Menu />
-              <Header />
-              <Skills />
-              <Projetos />
-            </>
-          } />
-
-          <Route path="/curriculo" element={<Curriculo />} />
-        </Routes>
-
-        <Footer />
-      </section>
+      <main>
+        <section>
+          <ButtonWhats />
+          <Routes>
+            <Route path="/" element={
+              <>
+                <Menu />
+                <Header />
+                <Skills />
+                <Projetos />
+              </>
+            } />
+            <Route path="/curriculo" element={<Curriculo />} />
+          </Routes>
+          <Footer />
+        </section>
+      </main>
 
     </HashRouter>
   );
