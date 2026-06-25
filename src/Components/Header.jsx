@@ -80,7 +80,10 @@ const Header = () => {
                     </div>
 
                     <div className="c-img-header flex-center">
-                        <img src={persona} alt="Foto de perfil" />
+                        <img src={persona}
+                            alt="Foto de perfil"
+                            decoding="async"
+                            fetchpriority="high" />
                     </div>
 
                     <div className="text-qualidade flex-colum gap-xl">
