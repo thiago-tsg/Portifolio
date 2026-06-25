@@ -7,44 +7,44 @@ import { useEffect, useState } from "react";
 // Imagens
 
 // F4L
-import fightDesktop from '../assets/projetos/desktop-fight-for-life.png'
-import fightTablet from '../assets/projetos/tablet-fight-for-life.png'
-import fightMobile from '../assets/projetos/mobile-fight-for-life.png'
+import fightDesktop from '../assets/projetos/desktop-fight-for-life.webp'
+import fightTablet from '../assets/projetos/tablet-fight-for-life.webp'
+import fightMobile from '../assets/projetos/mobile-fight-for-life.webp'
 
 // Palazzo Prado
-import palazzoDesktop from '../assets/projetos/desktop-palazzo-prado.png'
-import palazzoTablet from '../assets/projetos/tablet-palazzo-prado.png'
-import palazzoMobile from '../assets/projetos/mobile-palazzo-prado.png'
+import palazzoDesktop from '../assets/projetos/desktop-palazzo-prado.webp'
+import palazzoTablet from '../assets/projetos/tablet-palazzo-prado.webp'
+import palazzoMobile from '../assets/projetos/mobile-palazzo-prado.webp'
 
 // Planeta Kids
-import planetaDesktop from '../assets/projetos/desktop-planeta-kids.png'
-import planetaTablet from '../assets/projetos/tablet-planeta-kids.png'
-import planetaMobile from '../assets/projetos/mobile-planeta-kids.png'
+import planetaDesktop from '../assets/projetos/desktop-planeta-kids.webp'
+import planetaTablet from '../assets/projetos/tablet-planeta-kids.webp'
+import planetaMobile from '../assets/projetos/mobile-planeta-kids.webp'
 
 // Tecna
-import tecnaDesktop from '../assets/projetos/desktop-tecna.png'
-import tecnaTablet from '../assets/projetos/tablet-tecna.png'
-import tecnaMobile from '../assets/projetos/mobile-tecna.png'
+import tecnaDesktop from '../assets/projetos/desktop-tecna.webp'
+import tecnaTablet from '../assets/projetos/tablet-tecna.webp'
+import tecnaMobile from '../assets/projetos/mobile-tecna.webp'
 
 // Cimetec
-import cimetecDesktop from '../assets/projetos/desktop-cimetec.png'
-import cimetecTablet from '../assets/projetos/tablet-cimetec.png'
-import cimetecMobile from '../assets/projetos/mobile-cimetec.png'
+import cimetecDesktop from '../assets/projetos/desktop-cimetec.webp'
+import cimetecTablet from '../assets/projetos/tablet-cimetec.webp'
+import cimetecMobile from '../assets/projetos/mobile-cimetec.webp'
 
 // Santa Clara
-import santaDesktop from '../assets/projetos/desktop-santa-clara.png'
-import santaTablet from '../assets/projetos/tablet-santa-clara.png'
-import santaMobile from '../assets/projetos/mobile-santa-clara.png'
+import santaDesktop from '../assets/projetos/desktop-santa-clara.webp'
+import santaTablet from '../assets/projetos/tablet-santa-clara.webp'
+import santaMobile from '../assets/projetos/mobile-santa-clara.webp'
 
 // Casa Bertolazzi
-import bertolazziDesktop from '../assets/projetos/desktop-casa-bertolazzi.png'
-import bertolazziTablet from '../assets/projetos/tablet-casa-bertolazzi.png'
-import bertolazziMobile from '../assets/projetos/mobile-casa-bertolazzi.png'
+import bertolazziDesktop from '../assets/projetos/desktop-casa-bertolazzi.webp'
+import bertolazziTablet from '../assets/projetos/tablet-casa-bertolazzi.webp'
+import bertolazziMobile from '../assets/projetos/mobile-casa-bertolazzi.webp'
 
 // Timer Fight
-import TimerFightDesktop from '../assets/projetos/desktop-timer-fight.png'
-import TimerFightTablet from '../assets/projetos/tablet-timer-fight.png'
-import TimerFightMobile from '../assets/projetos/mobile-timer-fight.png'
+import TimerFightDesktop from '../assets/projetos/desktop-timer-fight.webp'
+import TimerFightTablet from '../assets/projetos/tablet-timer-fight.webp'
+import TimerFightMobile from '../assets/projetos/mobile-timer-fight.webp'
 
 // Dados dos projetos
 const projetos = [

@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 
 // Imagens
-import persona from '../assets/persona.png'
+import persona from '../assets/persona.webp'
 
 // Ícones
 import { FaGithub, FaLinkedin, FaWhatsapp, FaInstagram } from "react-icons/fa";
