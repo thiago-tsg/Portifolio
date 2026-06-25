@@ -53,9 +53,9 @@ const projetos = [
         nome: "Fight For Life",
         descricao: "Academia de artes marciais.",
         imagens: [
+            fightMobile,
             fightDesktop,
             fightTablet,
-            fightMobile,
         ],
         link: "https://www.fight4life.com.br/",
         github: "https://github.com/thiago-tsg/Fight-For-Life",
@@ -68,17 +68,37 @@ const projetos = [
         },
     },
 
-    // Palazzo Prado
+    //Timer Fight
     {
-        nome: "Palazzo Prado",
-        descricao: "Buffet Pallazo Prado.",
+        nome: "Timer Fight",
+        descricao: "Timer para Academias e Personal.",
         imagens: [
-            palazzoDesktop,
-            palazzoTablet,
-            palazzoMobile,
+            TimerFightMobile,
+            TimerFightDesktop,
+            TimerFightTablet,
         ],
-        link: "https://www.palazzoprado.com.br/",
-        github: "https://github.com/thiago-tsg/Palazzo-Prado",
+        link: "https://github.com/thiago-tsg/Timer-Fight/",
+        github: "https://github.com/thiago-tsg/Timer-Fight/",
+        case: {
+            problema: "Desenvolvimento em uma linguagem nova, até o momento usava apenas react vite, focado para web.",
+
+            solucao: "Entreguei um aplicativo com diversas funcionalidades, sanando a dor do publico, algumas delas são: Logotipo da academia ou personal, personalização de sons, quantidade de rounds e etc.",
+
+            tecnologias: "React Native, JavaScript, TS, TSX, Gulp, Firebase, API Rest, Git, Git Hub, Node.js."
+        }
+    },
+
+    // Planeta Kids
+    {
+        nome: "Planeta Kids",
+        descricao: "Buffet infantil Planeta Kids.",
+        imagens: [
+            planetaMobile,
+            planetaDesktop,
+            planetaTablet,
+        ],
+        link: "https://www.planetakids.com.br/",
+        github: "https://github.com/repos",
         case: {
             problema: "Necessidade de entregar um site institucional em curto prazo, mantendo alinhamento com identidade visual do cliente.",
 
@@ -88,17 +108,17 @@ const projetos = [
         }
     },
 
-    // Planeta Kids
+    // Palazzo Prado
     {
-        nome: "Planeta Kids",
-        descricao: "Buffet infantil Planeta Kids.",
+        nome: "Palazzo Prado",
+        descricao: "Buffet Pallazo Prado.",
         imagens: [
-            planetaDesktop,
-            planetaTablet,
-            planetaMobile,
+            palazzoMobile,
+            palazzoDesktop,
+            palazzoTablet,
         ],
-        link: "https://www.planetakids.com.br/",
-        github: "https://github.com/repos",
+        link: "https://www.palazzoprado.com.br/",
+        github: "https://github.com/thiago-tsg/Palazzo-Prado",
         case: {
             problema: "Necessidade de entregar um site institucional em curto prazo, mantendo alinhamento com identidade visual do cliente.",
 
@@ -113,9 +133,9 @@ const projetos = [
         nome: "Tecna",
         descricao: "Agencia de marketing digital.",
         imagens: [
+            tecnaMobile,
             tecnaDesktop,
             tecnaTablet,
-            tecnaMobile,
         ],
         link: "https://tecna.com.br/",
         github: " https://github.com/thiago-tsg/Tecna",
@@ -133,9 +153,9 @@ const projetos = [
         nome: "Cimetec",
         descricao: "Fabricante de Máquinas CNC.",
         imagens: [
+            cimetecMobile,
             cimetecDesktop,
             cimetecTablet,
-            cimetecMobile,
         ],
         link: "https://thiago-tsg.github.io/Cimetec/",
         github: " https://github.com/thiago-tsg/Cimetec",
@@ -153,9 +173,9 @@ const projetos = [
         nome: "Santa Clara",
         descricao: "Distribuidor de Projetores Cinematográficos.",
         imagens: [
+            santaMobile,
             santaDesktop,
             santaTablet,
-            santaMobile,
         ],
         link: "https://thiago-tsg.github.io/Santa-Clara/",
         github: " https://github.com/thiago-tsg/Santa-Clara",
@@ -173,9 +193,9 @@ const projetos = [
         nome: "Casa bertolazzi",
         descricao: "Buffet Casa Bertolazzi.",
         imagens: [
+            bertolazziMobile,
             bertolazziDesktop,
             bertolazziTablet,
-            bertolazziMobile,
         ],
         link: "https://casabertolazzi.com.br/",
         github: " https://github.com/thiago-tsg/casa-bertolazzi",
@@ -188,25 +208,7 @@ const projetos = [
         }
     },
 
-    //Timer Fight
-    {
-        nome: "Timer Fight",
-        descricao: "Timer para Academias e Personal.",
-        imagens: [
-            TimerFightDesktop,
-            TimerFightTablet,
-            TimerFightMobile,
-        ],
-        link: "https://github.com/thiago-tsg/Timer-Fight/",
-        github: "https://github.com/thiago-tsg/Timer-Fight/",
-        case: {
-            problema: "Desenvolvimento em uma linguagem nova, até o momento usava apenas react vite, focado para web.",
 
-            solucao: "Entreguei um aplicativo com diversas funcionalidades, sanando a dor do publico, algumas delas são: Logotipo da academia ou personal, personalização de sons, quantidade de rounds e etc.",
-
-            tecnologias: "React Native, JavaScript, TS, TSX, Gulp, Firebase, API Rest, Git, Git Hub, Node.js."
-        }
-    },
 ];
 
 const Projetos = () => {
