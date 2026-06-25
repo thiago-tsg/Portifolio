@@ -419,6 +419,7 @@ const Projetos = () => {
 
             {/* MODAL PRINCIPAL */}
             {ativo && (
+                
                 <div className="modal flex-center" onClick={() => setAtivo(null)}>
                     <div
                         className="modal-content"

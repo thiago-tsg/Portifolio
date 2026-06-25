@@ -11,7 +11,13 @@ const Menu = () => {
 
     return (
         <section className="cg-menu space-between flex-center">
-            <h1>Thiago S.G</h1>
+            <Link
+                to="/"
+                className="logo"
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+                <h1>Thiago S.G</h1>
+            </Link>
 
             <div className="menu-wrapper">
                 <button className="btn" onClick={() => setOpen(!open)}>
