@@ -18,10 +18,10 @@ const ScrollToTop = () => {
 
   useEffect(() => {
     if (hash) {
-      const element = document.querySelector(hash);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+      requestAnimationFrame(() => {
+        const element = document.getElementById(hash.replace("#", ""));
+        element?.scrollIntoView();
+      });
       return;
     }
 

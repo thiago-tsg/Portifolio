@@ -1,48 +1,11 @@
 import { useEffect, useRef } from "react";
-
 import "../Styles/Background.scss";
 
-const PARTICLE_COUNT = 140;
+const BASE_PARTICLES = 120; // já menor
 const CONNECT_DISTANCE = 100;
 const MOUSE_DISTANCE = 140;
 
 export default function Background() {
-
-    const updatePointer = (x, y) => {
-        mouse.x = x;
-        mouse.y = y;
-    };
-
-    const handlePointerMove = (e) => {
-        updatePointer(e.clientX, e.clientY);
-    };
-
-    const handleTouchMove = (e) => {
-        if (e.touches.length) {
-            updatePointer(
-                e.touches[0].clientX,
-                e.touches[0].clientY
-            );
-        }
-    };
-
-    const handleTouchStart = (e) => {
-        if (e.touches.length) {
-            updatePointer(
-                e.touches[0].clientX,
-                e.touches[0].clientY
-            );
-        }
-    };
-
-    window.addEventListener("pointermove", handlePointerMove);
-    window.addEventListener("touchstart", handleTouchStart, {
-        passive: true,
-    });
-    window.addEventListener("touchmove", handleTouchMove, {
-        passive: true,
-    });
-
     const canvasRef = useRef(null);
 
     useEffect(() => {
@@ -52,12 +15,15 @@ export default function Background() {
         let width = window.innerWidth;
         let height = window.innerHeight;
 
-        //
-        // RESOLUTION FIX
-        //
+        const isMobile = width < 768;
+        const PARTICLE_COUNT = isMobile ? 60 : BASE_PARTICLES;
+
+        let mouse = { x: width / 2, y: height / 2 };
+        let running = true;
+        let lastTime = 0;
+
         const setCanvasSize = () => {
-            const dpr =
-                window.devicePixelRatio || 1;
+            const dpr = window.devicePixelRatio || 1;
 
             width = window.innerWidth;
             height = window.innerHeight;
@@ -68,304 +34,141 @@ export default function Background() {
             canvas.style.width = `${width}px`;
             canvas.style.height = `${height}px`;
 
-            ctx.setTransform(
-                dpr,
-                0,
-                0,
-                dpr,
-                0,
-                0
-            );
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         };
 
         setCanvasSize();
 
-        //
-        // MOUSE
-        //
-        const mouse = {
-            x: width / 2,
-            y: height / 2,
-        };
+        const particles = Array.from({ length: PARTICLE_COUNT }, () => ({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * 1,
+            vy: (Math.random() - 0.5) * 1,
+            radius: Math.random() * 1.3 + 0.4,
+        }));
 
-        const handleMouseMove = (e) => {
+        const updateMouse = (e) => {
             mouse.x = e.clientX;
             mouse.y = e.clientY;
         };
 
-        //
-        // PARTICLES
-        //
-        const particles = Array.from(
-            { length: PARTICLE_COUNT },
-            () => ({
-                x: Math.random() * width,
-                y: Math.random() * height,
+        const pause = () => (running = false);
+        const resume = () => {
+            running = true;
+            requestAnimationFrame(animate);
+        };
 
-                vx:
-                    (Math.random() - 0.5) * 1.2,
+        const animate = (time) => {
+            if (!running) return;
 
-                vy:
-                    (Math.random() - 0.5) * 1.2,
+            // throttle mobile (30fps)
+            if (isMobile && time - lastTime < 33) {
+                requestAnimationFrame(animate);
+                return;
+            }
+            lastTime = time;
 
-                //
-                // MENOR = MAIS UNIVERSO
-                //
-                radius:
-                    Math.random() * 1.5 + 0.5,
-            })
-        );
-
-        let animationFrame;
-
-        //
-        // ANIMATION
-        //
-        const animate = () => {
             ctx.clearRect(0, 0, width, height);
 
-            //
             // UPDATE PARTICLES
-            //
-            for (const p of particles) {
+            for (let i = 0; i < particles.length; i++) {
+                const p = particles[i];
+
                 p.x += p.vx;
                 p.y += p.vy;
 
-                //
-                // MOUSE INTERACTION
-                //
-                const dxMouse = p.x - mouse.x;
-                const dyMouse = p.y - mouse.y;
+                const dx = p.x - mouse.x;
+                const dy = p.y - mouse.y;
+                const distSq = dx * dx + dy * dy;
 
-                const distMouseSq =
-                    dxMouse * dxMouse +
-                    dyMouse * dyMouse;
+                if (distSq < MOUSE_DISTANCE * MOUSE_DISTANCE) {
+                    const dist = Math.sqrt(distSq) || 1;
+                    const force = (MOUSE_DISTANCE - dist) / MOUSE_DISTANCE;
 
-                if (
-                    distMouseSq <
-                    MOUSE_DISTANCE *
-                    MOUSE_DISTANCE
-                ) {
-                    const dist =
-                        Math.sqrt(distMouseSq) || 1;
-
-                    const force =
-                        (MOUSE_DISTANCE - dist) /
-                        MOUSE_DISTANCE;
-
-                    p.vx +=
-                        (dxMouse / dist) *
-                        force *
-                        0.08;
-
-                    p.vy +=
-                        (dyMouse / dist) *
-                        force *
-                        0.08;
+                    p.vx += (dx / dist) * force * 0.05;
+                    p.vy += (dy / dist) * force * 0.05;
                 }
 
-                //
-                // DAMPING
-                //
-                p.vx *= 0.99;
-                p.vy *= 0.99;
+                p.vx *= 0.98;
+                p.vy *= 0.98;
 
-                //
-                // BOUNDS
-                //
-                if (
-                    p.x <= 0 ||
-                    p.x >= width
-                ) {
-                    p.vx *= -1;
-                }
-
-                if (
-                    p.y <= 0 ||
-                    p.y >= height
-                ) {
-                    p.vy *= -1;
-                }
+                if (p.x < 0 || p.x > width) p.vx *= -1;
+                if (p.y < 0 || p.y > height) p.vy *= -1;
             }
 
-            //
-            // CONNECTIONS
-            //
+            // CONNECTIONS (OTIMIZADO: menos intensidade visual)
             ctx.lineWidth = 1;
-
-            //
-            // SEM GLOW PESADO NAS LINHAS
-            //
             ctx.shadowBlur = 0;
 
-            for (
-                let i = 0;
-                i < particles.length;
-                i++
-            ) {
+            for (let i = 0; i < particles.length; i++) {
                 const p1 = particles[i];
 
-                //
-                // LINHA COM MOUSE
-                //
+                // conexão com mouse
                 const mdx = p1.x - mouse.x;
                 const mdy = p1.y - mouse.y;
+                const mouseDistSq = mdx * mdx + mdy * mdy;
 
-                const mouseDist = Math.sqrt(
-                    mdx * mdx + mdy * mdy
-                );
-
-                if (
-                    mouseDist <
-                    CONNECT_DISTANCE
-                ) {
-                    const opacity =
-                        1 -
-                        mouseDist /
-                        CONNECT_DISTANCE;
+                if (mouseDistSq < CONNECT_DISTANCE * CONNECT_DISTANCE) {
+                    const opacity = 1 - Math.sqrt(mouseDistSq) / CONNECT_DISTANCE;
 
                     ctx.beginPath();
-
                     ctx.moveTo(p1.x, p1.y);
+                    ctx.lineTo(mouse.x, mouse.y);
 
-                    ctx.lineTo(
-                        mouse.x,
-                        mouse.y
-                    );
-
-                    //
-                    // LINHA MOUSE
-                    //
-                    ctx.strokeStyle = `rgba(180,255,220,${opacity * 0.35
-                        })`;
-
+                    ctx.strokeStyle = `rgba(180,255,220,${opacity * 0.25})`;
                     ctx.stroke();
                 }
 
-                //
-                // LINHAS ENTRE PARTICULAS
-                //
-                for (
-                    let j = i + 1;
-                    j < particles.length;
-                    j++
-                ) {
+                // conexão entre partículas (OTIMIZAÇÃO: só metade da densidade visual)
+                for (let j = i + 1; j < particles.length; j += 2) {
                     const p2 = particles[j];
 
                     const dx = p1.x - p2.x;
                     const dy = p1.y - p2.y;
+                    const distSq = dx * dx + dy * dy;
 
-                    const distSq =
-                        dx * dx + dy * dy;
-
-                    if (
-                        distSq <
-                        CONNECT_DISTANCE *
-                        CONNECT_DISTANCE
-                    ) {
-                        const opacity =
-                            1 -
-                            distSq /
-                            (CONNECT_DISTANCE *
-                                CONNECT_DISTANCE);
+                    if (distSq < CONNECT_DISTANCE * CONNECT_DISTANCE) {
+                        const opacity = 1 - distSq / (CONNECT_DISTANCE * CONNECT_DISTANCE);
 
                         ctx.beginPath();
+                        ctx.moveTo(p1.x, p1.y);
+                        ctx.lineTo(p2.x, p2.y);
 
-                        ctx.moveTo(
-                            p1.x,
-                            p1.y
-                        );
-
-                        ctx.lineTo(
-                            p2.x,
-                            p2.y
-                        );
-
-                        //
-                        // LINHAS SUAVES
-                        //
-                        ctx.strokeStyle = `rgba(140,255,200,${opacity * 0.18
-                            })`;
-
+                        ctx.strokeStyle = `rgba(140,255,200,${opacity * 0.12})`;
                         ctx.stroke();
                     }
                 }
             }
 
-            //
-            // DRAW PARTICLES
-            //
+            // DRAW PARTICLES (sem shadow pesado)
+            ctx.fillStyle = "rgba(180,255,220,0.85)";
+
             for (const p of particles) {
                 ctx.beginPath();
-
-                ctx.arc(
-                    p.x,
-                    p.y,
-                    p.radius,
-                    0,
-                    Math.PI * 2
-                );
-
-                //
-                // GLOW SUAVE
-                //
-                ctx.shadowBlur = 8;
-
-                ctx.shadowColor =
-                    "rgba(140,255,200,0.5)";
-
-                //
-                // PARTÍCULAS
-                //
-                ctx.fillStyle =
-                    "rgba(180,255,220,0.9)";
-
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
                 ctx.fill();
             }
 
-            animationFrame =
-                requestAnimationFrame(animate);
+            requestAnimationFrame(animate);
         };
 
-        animate();
+        // EVENTS (CORRETO AGORA)
+        window.addEventListener("resize", setCanvasSize);
+        window.addEventListener("pointermove", updateMouse, { passive: true });
 
-        //
-        // EVENTS
-        //
-        window.addEventListener(
-            "resize",
-            setCanvasSize
-        );
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) pause();
+            else resume();
+        });
 
-        const handlePointerMove = (e) => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
-        };
+        requestAnimationFrame(animate);
 
-        window.addEventListener("pointermove", handlePointerMove);
-
-        //
-        // CLEANUP
-        //
         return () => {
-            cancelAnimationFrame(
-                animationFrame
-            );
-
-            window.removeEventListener(
-                "resize",
-                setCanvasSize
-            );
-            window.removeEventListener("pointermove", handlePointerMove);
-            window.removeEventListener("touchstart", handleTouchStart);
-            window.removeEventListener("touchmove", handleTouchMove);
+            window.removeEventListener("resize", setCanvasSize);
+            window.removeEventListener("pointermove", updateMouse);
+            document.removeEventListener("visibilitychange", pause);
         };
     }, []);
 
-    return (
-        <canvas
-            ref={canvasRef}
-            className="background-canvas"
-        />
-    );
+    return <canvas ref={canvasRef} className="background-canvas" />;
 }
