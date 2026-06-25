@@ -65,17 +65,14 @@ const Curriculo = () => {
                     <div className="bloco reveal">
                         <h2>Objetivo</h2>
                         <p>
-                            Desenvolvedor Full Stack especializado em React.js, Nodejs, Firebase, APIs, JavaScript, HTML,
-                            SCSS, integração com APIs e desenvolvimento de interfaces responsivas e performáticas.
+                            Atuar no desenvolvimento de aplicações web modernas utilizando React.js e JavaScript, contribuindo na construção de interfaces responsivas, integração com APIs, autenticação, banco de dados com Firebase e soluções voltadas para performance e usabilidade.
                         </p>
                     </div>
 
                     <div className="bloco reveal">
                         <h2>Resumo</h2>
                         <p>
-                            Desenvolvedor com experiência na construção de aplicações web modernas e escaláveis.
-                            Atuo com React, APIs e boas práticas como componentização e organização de código.
-                            Experiência com Firebase, Node.js e fluxo completo de desenvolvimento.
+                            Desenvolvedor Front-End com experiência no desenvolvimento de aplicações web utilizando React.js, JavaScript, HTML e SCSS. Atuo na criação de interfaces responsivas, integração com APIs e implementação de funcionalidades utilizando Firebase para autenticação e banco de dados. Possuo conhecimentos em Node.js para criação de servidores e suporte a integrações, contribuindo para o desenvolvimento de soluções web focadas em usabilidade, performance e manutenção de código.
                         </p>
                     </div>
 
@@ -116,7 +113,7 @@ const Curriculo = () => {
 
                         <div className="item">
                             <h3>Tecna Soluções Digitais</h3>
-                            <span>Full Stack | 2024 - 2025</span>
+                            <span>Front-end | 2024 - 2025</span>
                             <ul>
                                 <li>React + Node.js</li>
                                 <li>APIs REST e banco de dados</li>
@@ -126,7 +123,7 @@ const Curriculo = () => {
 
                         <div className="item">
                             <h3>Agency CodeBr</h3>
-                            <span>Full Stack | 2022 - 2024</span>
+                            <span>Front-end | 2022 - 2024</span>
                             <ul>
                                 <li>Aplicações responsivas</li>
                                 <li>Autenticação e APIs</li>

@@ -73,12 +73,12 @@ const Skills = () => {
                     </div>
                 </div>
                 <div className="cg-resumo space-between flex-colum">
-                    <p>Desenvolvedor Full Stack | React.js | JavaScript | HTML | SCSS | Firebase | APIs | Node.js | Git</p>
-                    <p>Desenvolvedor Full Stack com experiência na construção de aplicações web modernas, escaláveis e focadas na experiência do usuário. Atuo com HTML, CSS, JavaScript, React e Nodejs, aplicando boas práticas de arquitetura, componentização e organização de código.</p>
-                    <p>Tenho vivência no desenvolvimento e manutenção de interfaces responsivas e performáticas, além de integração com APIs e serviços como Firebase. Participo ativamente de todo o ciclo de desenvolvimento, desde a prototipação até a entrega e otimização contínua das aplicações.</p>
-                    <p>Utilizo ferramentas como Git para versionamento e PhotoShop e Figma para alinhamento entre design e desenvolvimento, contribuindo para entregas mais consistentes e eficientes em equipe.</p>
-                    <p>Além do foco em Front-End, possuo conhecimentos em Node.js, o que me permite ter uma visão mais completa das aplicações e atuar com maior autonomia na integração com back-end.</p>
-                    <p>Minha trajetória inclui projetos em e-commerce e soluções digitais, com foco em melhoria de usabilidade, performance e resultados do produto.</p>
+                    <p>Desenvolvedor Front-End | React.js | JavaScript | HTML | SCSS | Firebase | APIs | Node.js | Git</p>
+                    <p>Desenvolvedor focado na criação de interfaces web modernas, responsivas e com boa experiência de usuário, utilizando principalmente React.js, JavaScript, HTML e SCSS.</p>
+                    <p>Tenho experiência no desenvolvimento de aplicações integradas com APIs e serviços como Firebase, utilizando recursos de autenticação, banco de dados e armazenamento. Também atuo na integração de gateways e APIs de pagamento, conectando aplicações a serviços bancários e plataformas de cobrança.</p>
+                    <p>Possuo conhecimentos em Node.js para criação e manutenção de servidores e rotas de API, o que me permite compreender e participar de etapas além do front-end quando necessário.</p>
+                    <p>No dia a dia, utilizo ferramentas como Git, Figma e Photoshop para colaborar no desenvolvimento de produtos digitais, buscando entregar soluções funcionais, organizadas e alinhadas aos objetivos do projeto.</p>
+                    <p>Tenho experiência em projetos de e-commerce e aplicações web, sempre com foco em usabilidade, performance e evolução contínua dos produtos.</p>
                     <Link to="/curriculo" className="btn">
                         Curriculo
                     </Link>

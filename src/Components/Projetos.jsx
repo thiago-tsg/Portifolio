@@ -51,18 +51,18 @@ const projetos = [
     // F4L
     {
         nome: "Fight For Life",
-        descricao: "Academia de lutas.",
+        descricao: "Academia de artes marciais.",
         imagens: [
             fightDesktop,
             fightTablet,
             fightMobile,
         ],
         link: "https://www.fight4life.com.br/",
-        github: "#",
+        github: "https://github.com/thiago-tsg/Fight-For-Life",
         case: {
-            problema: "A academia não possuía um sistema digital estruturado para aquisição e gestão de alunos, limitando vendas e automação de processos.",
+            problema: "A academia não possuía um sistema digital estruturado para aquisição e gestão de produtos e conteudos, limitando vendas e automação de processos.",
 
-            solucao: "Desenvolvi uma plataforma completa com foco em conversão e escalabilidade, incluindo sistema de autenticação, área do aluno, e-commerce para planos e integração com pagamentos. O projeto também priorizou performance, UX e animações modernas para retenção do usuário.",
+            solucao: "Desenvolvi uma plataforma completa com foco em conversão e escalabilidade, incluindo sistema de autenticação, área do aluno, e-commerce para planos e produtos, e integração com pagamentos. O projeto também priorizou performance, UX e animações modernas para retenção do usuário.",
 
             tecnologias: "React (Vite), Firebase, Node.js, SCSS, Integração de pagamentos, Autenticação segura (JWT / Firebase Auth)"
         },
@@ -78,11 +78,11 @@ const projetos = [
             palazzoMobile,
         ],
         link: "https://www.palazzoprado.com.br/",
-        github: "https://thiago-tsg.github.io/Palazzo-Prado/",
+        github: "https://github.com/thiago-tsg/Palazzo-Prado",
         case: {
-            problema: "Necessidade de entregar um site institucional de alto padrão em curto prazo, mantendo alinhamento com identidade visual sofisticada do cliente.",
+            problema: "Necessidade de entregar um site institucional em curto prazo, mantendo alinhamento com identidade visual do cliente.",
 
-            solucao: "Desenvolvi uma interface elegante e otimizada para conversão, com foco em experiência visual e direcionamento estratégico para contato via WhatsApp, principal canal de vendas do cliente.",
+            solucao: "Desenvolvi uma interface otimizada para conversão, com foco em experiência visual e direcionamento estratégico para contato via WhatsApp, principal canal de vendas do cliente.",
 
             tecnologias: "HTML, SCSS, JavaScript, Gulp"
         }
@@ -98,11 +98,11 @@ const projetos = [
             planetaMobile,
         ],
         link: "https://www.planetakids.com.br/",
-        github: "#",
+        github: "https://github.com/repos",
         case: {
-            problema: "Site institucional com baixa atratividade para o público infantil e responsáveis, impactando o engajamento.",
+            problema: "Necessidade de entregar um site institucional em curto prazo, mantendo alinhamento com identidade visual do cliente.",
 
-            solucao: "Criei uma experiência visual mais dinâmica e amigável, com foco em cores, interação e clareza nas informações, facilitando o processo de decisão dos clientes.",
+            solucao: "Desenvolvi uma interface otimizada para conversão, com foco em experiência visual e direcionamento estratégico para contato via WhatsApp, principal canal de vendas do cliente.",
 
             tecnologias: "HTML, SCSS, JavaScript, Gulp"
         }
@@ -118,7 +118,7 @@ const projetos = [
             tecnaMobile,
         ],
         link: "https://tecna.com.br/",
-        github: " https://thiago-tsg.github.io/Tecna/",
+        github: " https://github.com/thiago-tsg/Tecna",
         case: {
             problema: "Desenvolvimento sob alto nível de exigência estética e técnica, com múltiplas validações e ajustes finos durante o processo.",
 
@@ -131,18 +131,18 @@ const projetos = [
     //Cimetec
     {
         nome: "Cimetec",
-        descricao: "Fabricante de poltronas para cinema.",
+        descricao: "Fabricante de Máquinas CNC.",
         imagens: [
             cimetecDesktop,
             cimetecTablet,
             cimetecMobile,
         ],
-        link: "#",
-        github: " https://thiago-tsg.github.io/Cimetec/",
+        link: "https://thiago-tsg.github.io/Cimetec/",
+        github: " https://github.com/thiago-tsg/Cimetec",
         case: {
-            problema: "Desenvolvimento sob alto nível de exigência estética e técnica, com múltiplas validações e ajustes finos durante o processo.",
+            problema: "Necessidade de entregar um site institucional em curto prazo, mantendo alinhamento com identidade visual do cliente.",
 
-            solucao: "Entreguei um site institucional alinhado com o posicionamento da agência, focado em autoridade digital, performance e clareza na comunicação dos serviços.",
+            solucao: "Desenvolvi uma interface otimizada para conversão, com foco em experiência visual e direcionamento estratégico para contato via WhatsApp, principal canal de vendas do cliente.",
 
             tecnologias: "HTML, SCSS, JavaScript, Gulp"
         }
@@ -151,18 +151,18 @@ const projetos = [
     //Santa Clara
     {
         nome: "Santa Clara",
-        descricao: "Fabricante de poltronas para cinema.",
+        descricao: "Distribuidor de Projetores Cinematográficos.",
         imagens: [
             santaDesktop,
             santaTablet,
             santaMobile,
         ],
-        link: "#",
-        github: " https://thiago-tsg.github.io/santa-clara/",
+        link: "https://thiago-tsg.github.io/Santa-Clara/",
+        github: " https://github.com/thiago-tsg/Santa-Clara",
         case: {
-            problema: "Desenvolvimento sob alto nível de exigência estética e técnica, com múltiplas validações e ajustes finos durante o processo.",
+            problema: "Necessidade de entregar um site institucional em curto prazo, mantendo alinhamento com identidade visual do cliente.",
 
-            solucao: "Entreguei um site institucional alinhado com o posicionamento da agência, focado em autoridade digital, performance e clareza na comunicação dos serviços.",
+            solucao: "Desenvolvi uma interface otimizada para conversão, com foco em experiência visual e direcionamento estratégico para contato via WhatsApp, principal canal de vendas do cliente.",
 
             tecnologias: "HTML, SCSS, JavaScript, Gulp"
         }
@@ -171,18 +171,18 @@ const projetos = [
     //Casa Bertolazzi
     {
         nome: "Casa bertolazzi",
-        descricao: "Fabricante de poltronas para cinema.",
+        descricao: "Buffet Casa Bertolazzi.",
         imagens: [
             bertolazziDesktop,
             bertolazziTablet,
             bertolazziMobile,
         ],
-        link: "#",
-        github: " https://thiago-tsg.github.io/casa-bertolazzi/",
+        link: "https://casabertolazzi.com.br/",
+        github: " https://github.com/thiago-tsg/casa-bertolazzi",
         case: {
-            problema: "Desenvolvimento sob alto nível de exigência estética e técnica, com múltiplas validações e ajustes finos durante o processo.",
+            problema: "Necessidade de entregar um site institucional em curto prazo, mantendo alinhamento com identidade visual do cliente.",
 
-            solucao: "Entreguei um site institucional alinhado com o posicionamento da agência, focado em autoridade digital, performance e clareza na comunicação dos serviços.",
+            solucao: "Desenvolvi uma interface otimizada para conversão, com foco em experiência visual e direcionamento estratégico para contato via WhatsApp, principal canal de vendas do cliente.",
 
             tecnologias: "HTML, SCSS, JavaScript, Gulp"
         }
@@ -191,20 +191,20 @@ const projetos = [
     //Timer Fight
     {
         nome: "Timer Fight",
-        descricao: "Fabricante de poltronas para cinema.",
+        descricao: "Timer para Academias e Personal.",
         imagens: [
             TimerFightDesktop,
             TimerFightTablet,
             TimerFightMobile,
         ],
-        link: "#",
+        link: "https://github.com/thiago-tsg/Timer-Fight/",
         github: "https://github.com/thiago-tsg/Timer-Fight/",
         case: {
-            problema: "Desenvolvimento sob alto nível de exigência estética e técnica, com múltiplas validações e ajustes finos durante o processo.",
+            problema: "Desenvolvimento em uma linguagem nova, até o momento usava apenas react vite, focado para web.",
 
-            solucao: "Entreguei um site institucional alinhado com o posicionamento da agência, focado em autoridade digital, performance e clareza na comunicação dos serviços.",
+            solucao: "Entreguei um aplicativo com diversas funcionalidades, sanando a dor do publico, algumas delas são: Logotipo da academia ou personal, personalização de sons, quantidade de rounds e etc.",
 
-            tecnologias: "HTML, SCSS, JavaScript, Gulp"
+            tecnologias: "React Native, JavaScript, TS, TSX, Gulp, Firebase, API Rest, Git, Git Hub, Node.js."
         }
     },
 ];
