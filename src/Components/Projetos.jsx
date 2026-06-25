@@ -217,6 +217,10 @@ const Projetos = () => {
     const [caseAtivo, setCaseAtivo] = useState(null);
     const [touchStart, setTouchStart] = useState(0);
     const [touchEnd, setTouchEnd] = useState(0);
+    const [paginaAtual, setPaginaAtual] = useState(0);
+    const [cardsPorPagina, setCardsPorPagina] = useState(3);
+    const [touchStartProjetos, setTouchStartProjetos] = useState(0);
+    const [touchEndProjetos, setTouchEndProjetos] = useState(0);
     const handleTouchStart = (e) => {
         setTouchStart(e.targetTouches[0].clientX);
     };
@@ -232,7 +236,67 @@ const Projetos = () => {
             prev();
         }
     };
+    const handleProjetosTouchStart = (e) => {
+        setTouchStartProjetos(e.targetTouches[0].clientX);
+    };
+    const handleProjetosTouchMove = (e) => {
+        setTouchEndProjetos(e.targetTouches[0].clientX);
+    };
+    const handleProjetosTouchEnd = () => {
+        const distance = touchStartProjetos - touchEndProjetos;
 
+        if (distance > 50 && !estaNoFinal) {
+            proximaPagina();
+        }
+
+        if (distance < -50 && !estaNoInicio) {
+            paginaAnterior();
+        }
+    };
+    const totalPaginas = Math.ceil(
+        projetos.length / cardsPorPagina
+    );
+    const estaNoInicio = paginaAtual === 0;
+    const estaNoFinal = paginaAtual === totalPaginas - 1;
+    const projetosVisiveis = projetos.slice(
+        paginaAtual * cardsPorPagina,
+        paginaAtual * cardsPorPagina + cardsPorPagina
+    );
+    const proximaPagina = () => {
+        setPaginaAtual((prev) => prev + 1);
+    };
+    const paginaAnterior = () => {
+        setPaginaAtual((prev) => prev - 1);
+    };
+    const next = () => {
+        setIndex((prev) => (prev + 1) % ativo.imagens.length);
+    };
+    const prev = () => {
+        setIndex((prev) =>
+            prev === 0 ? ativo.imagens.length - 1 : prev - 1
+        );
+    };
+
+
+
+    useEffect(() => {
+        const handleResize = () => {
+            if (window.innerWidth <= 768) {
+                setCardsPorPagina(1);
+            } else {
+                setCardsPorPagina(3);
+            }
+        };
+
+        handleResize();
+
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
+    
     // Intersection Observer para animação de entrada e efeito de brilho no cursor nos cards
     useEffect(() => {
         const cards = document.querySelectorAll(".projeto-card");
@@ -299,22 +363,39 @@ const Projetos = () => {
     }, [ativo, caseAtivo]);
 
     // Funções para navegação do carrossel de imagens no modal
-    const next = () => {
-        setIndex((prev) => (prev + 1) % ativo.imagens.length);
-    };
-
-    const prev = () => {
-        setIndex((prev) =>
-            prev === 0 ? ativo.imagens.length - 1 : prev - 1
-        );
-    };
+    
 
     return (
         <section className="cg-projetos container" id="projects">
             <h2 className="title">// Projetos</h2>
 
-            <div className="projetos-grid grid3col gap-xl">
-                {projetos.map((proj, i) => (
+            <div className="carousel-controls flex gap-md">
+
+                <button
+                    className="btn"
+                    onClick={paginaAnterior}
+                    disabled={estaNoInicio}
+                >
+                    ←
+                </button>
+
+                <button
+                    className="btn"
+                    onClick={proximaPagina}
+                    disabled={estaNoFinal}
+                >
+                    →
+                </button>
+
+            </div>
+
+            <div
+                className="projetos-grid grid3col gap-xl"
+                onTouchStart={handleProjetosTouchStart}
+                onTouchMove={handleProjetosTouchMove}
+                onTouchEnd={handleProjetosTouchEnd}
+            >
+                {projetosVisiveis.map((proj, i) => (
                     <div
                         className="projeto-card flex-center"
                         key={i}

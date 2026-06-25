@@ -21,6 +21,12 @@
     }
   }
 
+  .carousel-controls,  button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    margin-bottom: 1rem;
+  }
+
   .projetos-grid {
     .projeto-card {
       position: relative;
@@ -30,8 +36,6 @@
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(122, 242, 152, 0.1);
       aspect-ratio: 16 / 10;
-      opacity: 0;
-      transform: translateY(40px);
 
       transition:
         opacity 0.8s ease,
@@ -320,6 +324,9 @@
 
 @media (max-width: 768px) {
   .cg-projetos {
+    .carousel-controls{
+      display: none;
+    }
     .projetos-grid {
       display: flex;
       gap: 1rem;
@@ -387,7 +394,6 @@
           }
 
           .btn {
-            display: none;
           }
         }
 
