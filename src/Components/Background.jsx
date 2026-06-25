@@ -7,6 +7,42 @@ const CONNECT_DISTANCE = 100;
 const MOUSE_DISTANCE = 140;
 
 export default function Background() {
+
+    const updatePointer = (x, y) => {
+        mouse.x = x;
+        mouse.y = y;
+    };
+
+    const handlePointerMove = (e) => {
+        updatePointer(e.clientX, e.clientY);
+    };
+
+    const handleTouchMove = (e) => {
+        if (e.touches.length) {
+            updatePointer(
+                e.touches[0].clientX,
+                e.touches[0].clientY
+            );
+        }
+    };
+
+    const handleTouchStart = (e) => {
+        if (e.touches.length) {
+            updatePointer(
+                e.touches[0].clientX,
+                e.touches[0].clientY
+            );
+        }
+    };
+
+    window.addEventListener("pointermove", handlePointerMove);
+    window.addEventListener("touchstart", handleTouchStart, {
+        passive: true,
+    });
+    window.addEventListener("touchmove", handleTouchMove, {
+        passive: true,
+    });
+
     const canvasRef = useRef(null);
 
     useEffect(() => {
@@ -108,7 +144,7 @@ export default function Background() {
                 if (
                     distMouseSq <
                     MOUSE_DISTANCE *
-                        MOUSE_DISTANCE
+                    MOUSE_DISTANCE
                 ) {
                     const dist =
                         Math.sqrt(distMouseSq) || 1;
@@ -186,7 +222,7 @@ export default function Background() {
                     const opacity =
                         1 -
                         mouseDist /
-                            CONNECT_DISTANCE;
+                        CONNECT_DISTANCE;
 
                     ctx.beginPath();
 
@@ -200,9 +236,8 @@ export default function Background() {
                     //
                     // LINHA MOUSE
                     //
-                    ctx.strokeStyle = `rgba(180,255,220,${
-                        opacity * 0.35
-                    })`;
+                    ctx.strokeStyle = `rgba(180,255,220,${opacity * 0.35
+                        })`;
 
                     ctx.stroke();
                 }
@@ -226,13 +261,13 @@ export default function Background() {
                     if (
                         distSq <
                         CONNECT_DISTANCE *
-                            CONNECT_DISTANCE
+                        CONNECT_DISTANCE
                     ) {
                         const opacity =
                             1 -
                             distSq /
-                                (CONNECT_DISTANCE *
-                                    CONNECT_DISTANCE);
+                            (CONNECT_DISTANCE *
+                                CONNECT_DISTANCE);
 
                         ctx.beginPath();
 
@@ -249,9 +284,8 @@ export default function Background() {
                         //
                         // LINHAS SUAVES
                         //
-                        ctx.strokeStyle = `rgba(140,255,200,${
-                            opacity * 0.18
-                        })`;
+                        ctx.strokeStyle = `rgba(140,255,200,${opacity * 0.18
+                            })`;
 
                         ctx.stroke();
                     }
@@ -303,10 +337,12 @@ export default function Background() {
             setCanvasSize
         );
 
-        window.addEventListener(
-            "mousemove",
-            handleMouseMove
-        );
+        const handlePointerMove = (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        };
+
+        window.addEventListener("pointermove", handlePointerMove);
 
         //
         // CLEANUP
@@ -320,11 +356,9 @@ export default function Background() {
                 "resize",
                 setCanvasSize
             );
-
-            window.removeEventListener(
-                "mousemove",
-                handleMouseMove
-            );
+            window.removeEventListener("pointermove", handlePointerMove);
+            window.removeEventListener("touchstart", handleTouchStart);
+            window.removeEventListener("touchmove", handleTouchMove);
         };
     }, []);
 

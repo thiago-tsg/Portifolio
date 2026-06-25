@@ -31,30 +31,13 @@ const ScrollToTop = () => {
   return null;
 };
 
-// 👇 DETECTA MOBILE
-const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth <= 768);
-
-    check(); // inicial
-    window.addEventListener("resize", check);
-
-    return () => window.removeEventListener("resize", check);
-  }, []);
-
-  return isMobile;
-};
-
 const App = () => {
-  const isMobile = useIsMobile();
 
   return (
     <HashRouter>
 
       {/* 👇 SÓ RENDERIZA NO DESKTOP */}
-      {!isMobile && <Background />}
+      <Background />
 
       <ScrollToTop />
 
